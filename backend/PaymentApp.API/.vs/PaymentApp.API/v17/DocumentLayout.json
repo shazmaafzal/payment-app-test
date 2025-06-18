@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\services\\paymenttransactionstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\services\\paymenttransactionstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\services\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\services\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\models\\transactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\models\\transactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\services\\paymenttransactionstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\services\\paymenttransactionstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\dtos\\cardbalancereportdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\controllers\\refundcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\controllers\\refundcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -53,14 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\services\\cardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\services\\cardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\services\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\services\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\models\\transactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\models\\transactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|d:\\shazma test\\part 1\\payment dashboard app\\backend\\paymentapp.api\\paymentapp.api\\models\\refundrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -90,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -98,59 +98,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ReportsController.cs",
-              "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\ReportsController.cs",
-              "RelativeDocumentMoniker": "PaymentApp.API\\Controllers\\ReportsController.cs",
-              "ToolTip": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\ReportsController.cs",
-              "RelativeToolTip": "PaymentApp.API\\Controllers\\ReportsController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBQAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T08:29:17.872Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CardBalanceReportDto.cs",
-              "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\DTOs\\CardBalanceReportDto.cs",
-              "RelativeDocumentMoniker": "PaymentApp.API\\DTOs\\CardBalanceReportDto.cs",
-              "ToolTip": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\DTOs\\CardBalanceReportDto.cs",
-              "RelativeToolTip": "PaymentApp.API\\DTOs\\CardBalanceReportDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T08:28:46.504Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CardBalanceReportFilterDto.cs",
-              "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\DTOs\\CardBalanceReportFilterDto.cs",
-              "RelativeDocumentMoniker": "PaymentApp.API\\DTOs\\CardBalanceReportFilterDto.cs",
-              "ToolTip": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\DTOs\\CardBalanceReportFilterDto.cs",
-              "RelativeToolTip": "PaymentApp.API\\DTOs\\CardBalanceReportFilterDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T08:28:36.17Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "PaymentTransactionStore.cs",
               "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\PaymentTransactionStore.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\Services\\PaymentTransactionStore.cs",
               "ToolTip": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\PaymentTransactionStore.cs",
               "RelativeToolTip": "PaymentApp.API\\Services\\PaymentTransactionStore.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAcwB0AAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAcwB0AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-18T08:24:44.09Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "PaymentReportFilterDto.cs",
               "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\DTOs\\PaymentReportFilterDto.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\DTOs\\PaymentReportFilterDto.cs",
@@ -163,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "CardController.cs",
               "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\CardController.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\Controllers\\CardController.cs",
@@ -202,7 +163,85 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 3,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\PaymentController.cs",
+              "RelativeDocumentMoniker": "PaymentApp.API\\Controllers\\PaymentController.cs",
+              "ToolTip": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\PaymentController.cs",
+              "RelativeToolTip": "PaymentApp.API\\Controllers\\PaymentController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T06:41:12.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PaymentService.cs",
+              "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\PaymentService.cs",
+              "RelativeDocumentMoniker": "PaymentApp.API\\Services\\PaymentService.cs",
+              "ToolTip": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\PaymentService.cs",
+              "RelativeToolTip": "PaymentApp.API\\Services\\PaymentService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAIwC4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T07:40:41.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReportsController.cs",
+              "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\ReportsController.cs",
+              "RelativeDocumentMoniker": "PaymentApp.API\\Controllers\\ReportsController.cs",
+              "ToolTip": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\ReportsController.cs",
+              "RelativeToolTip": "PaymentApp.API\\Controllers\\ReportsController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBQAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T08:29:17.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CardBalanceReportFilterDto.cs",
+              "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\DTOs\\CardBalanceReportFilterDto.cs",
+              "RelativeDocumentMoniker": "PaymentApp.API\\DTOs\\CardBalanceReportFilterDto.cs",
+              "ToolTip": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\DTOs\\CardBalanceReportFilterDto.cs",
+              "RelativeToolTip": "PaymentApp.API\\DTOs\\CardBalanceReportFilterDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T08:28:36.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Transactions.cs",
+              "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Models\\Transactions.cs",
+              "RelativeDocumentMoniker": "PaymentApp.API\\Models\\Transactions.cs",
+              "ToolTip": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Models\\Transactions.cs",
+              "RelativeToolTip": "PaymentApp.API\\Models\\Transactions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T08:09:41.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CardBalanceReportDto.cs",
+              "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\DTOs\\CardBalanceReportDto.cs",
+              "RelativeDocumentMoniker": "PaymentApp.API\\DTOs\\CardBalanceReportDto.cs",
+              "ToolTip": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\DTOs\\CardBalanceReportDto.cs",
+              "RelativeToolTip": "PaymentApp.API\\DTOs\\CardBalanceReportDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T08:28:46.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "CardValidationRequestDto.cs",
               "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\DTOs\\CardValidationRequestDto.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\DTOs\\CardValidationRequestDto.cs",
@@ -215,7 +254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "CardService.cs",
               "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\CardService.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\Services\\CardService.cs",
@@ -228,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "CardValidationResponseDto.cs",
               "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\DTOs\\CardValidationResponseDto.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\DTOs\\CardValidationResponseDto.cs",
@@ -241,20 +280,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PaymentController.cs",
-              "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\PaymentController.cs",
-              "RelativeDocumentMoniker": "PaymentApp.API\\Controllers\\PaymentController.cs",
-              "ToolTip": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\PaymentController.cs",
-              "RelativeToolTip": "PaymentApp.API\\Controllers\\PaymentController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T06:41:12.52Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "RefundController.cs",
               "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\RefundController.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\Controllers\\RefundController.cs",
@@ -267,7 +293,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "PaymentResponseDto.cs",
               "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\DTOs\\PaymentResponseDto.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\DTOs\\PaymentResponseDto.cs",
@@ -293,7 +319,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "PaymentRequestDto.cs",
               "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\DTOs\\PaymentRequestDto.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\DTOs\\PaymentRequestDto.cs",
@@ -302,32 +328,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-18T07:39:58.568Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "PaymentService.cs",
-              "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\PaymentService.cs",
-              "RelativeDocumentMoniker": "PaymentApp.API\\Services\\PaymentService.cs",
-              "ToolTip": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\PaymentService.cs",
-              "RelativeToolTip": "PaymentApp.API\\Services\\PaymentService.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAADgvxcAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T07:40:41.873Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Transactions.cs",
-              "DocumentMoniker": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Models\\Transactions.cs",
-              "RelativeDocumentMoniker": "PaymentApp.API\\Models\\Transactions.cs",
-              "ToolTip": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\Models\\Transactions.cs",
-              "RelativeToolTip": "PaymentApp.API\\Models\\Transactions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T08:09:41.619Z",
               "EditorCaption": ""
             },
             {
