@@ -1,4 +1,5 @@
 using FluentValidation;
+using PaymentApp.API.BackGround_Worker;
 using PaymentApp.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,11 @@ builder.Services.AddControllers();
 //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
 builder.Services.AddScoped<ICardService, CardService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddSingleton<IPaymentTransactionStore, PaymentTransactionStore>();
+builder.Services.AddHostedService<PaymentConfirmationWorker>();
+
+//builder.Logging.ClearProviders();
+//builder.Logging.AddConsole();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

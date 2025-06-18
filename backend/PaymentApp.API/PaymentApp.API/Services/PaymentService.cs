@@ -6,10 +6,12 @@ namespace PaymentApp.API.Services
     public class PaymentService : IPaymentService
     {
         private readonly List<Card> _cards;
-        private readonly List<Transaction> _transactions;
+        private readonly List<Transactions> _transactions;
+        private readonly IPaymentTransactionStore _transactionStore;
 
-        public PaymentService()
+        public PaymentService(IPaymentTransactionStore transactionStore)
         {
+            _transactionStore = transactionStore;
             // Use the same in-memory card list or inject from DB later
             _cards = new()
             {
@@ -36,7 +38,7 @@ namespace PaymentApp.API.Services
             var transactionId = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 16); // 16-char
             var refundCode = new Random().Next(1000, 9999).ToString();
 
-            var transaction = new Transaction
+            var transaction = new Transactions
             {
                 Id = Guid.NewGuid(),
                 CardNumber = card.CardNumber,
@@ -47,7 +49,8 @@ namespace PaymentApp.API.Services
                 IsConfirmed = false
             };
 
-            _transactions.Add(transaction);
+            //_transactions.Add(transaction);
+            _transactionStore.Add(transaction);
 
             return new PaymentResponseDto
             {
