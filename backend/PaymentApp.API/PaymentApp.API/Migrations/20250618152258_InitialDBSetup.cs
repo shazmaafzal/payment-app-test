@@ -40,7 +40,7 @@ namespace PaymentApp.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Transactionss",
+                name: "Transactions",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -54,7 +54,7 @@ namespace PaymentApp.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transactionss", x => x.Id);
+                    table.PrimaryKey("PK_Transactions", x => x.Id);
                 });
         }
 
@@ -68,7 +68,7 @@ namespace PaymentApp.API.Migrations
                 name: "RefundRequests");
 
             migrationBuilder.DropTable(
-                name: "Transactionss");
+                name: "Transactions");
         }
     }
 }

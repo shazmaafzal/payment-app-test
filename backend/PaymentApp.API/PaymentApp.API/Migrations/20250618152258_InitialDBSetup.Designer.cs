@@ -92,7 +92,7 @@ namespace PaymentApp.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Transactionss");
+                    b.ToTable("Transactions");
                 });
 #pragma warning restore 612, 618
         }

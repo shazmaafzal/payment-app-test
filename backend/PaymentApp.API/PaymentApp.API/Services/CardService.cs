@@ -1,37 +1,37 @@
 ﻿using PaymentApp.API.DTOs;
 using PaymentApp.API.Models;
+using PaymentApp.API.Repositories;
 
 namespace PaymentApp.API.Services
 {
     public class CardService : ICardService
     {
-        // For demo: In-memory card list - replace with DB later
-        private readonly List<Card> _cards = new()
+        private readonly ICardRepository _cardRepository;
+
+        public CardService(ICardRepository cardRepository)
         {
-            new Card {
-                Id = 1,
-                CardNumber = "1234567812345678",
-                CardHolderName = "John Doe",
-                ExpiryDate = DateTime.UtcNow.AddYears(1),
-                IsActive = true,
-                Balance = 1000
-            }
-        };
+            _cardRepository = cardRepository;
+        }
 
         public async Task<CardValidationResponseDto> ValidateCardAsync(CardValidationRequestDto request)
         {
-            // Simulate async DB lookup
+            var card = await _cardRepository.GetValidCardAsync(
+                request.CardNumber,
+                request.CardHolderName,
+                request.ExpiryDate
+            );
+
             //var card = _cards.Find(c =>
             //    c.CardNumber == request.CardNumber &&
             //    c.CardHolderName.ToLower() == request.CardHolderName.ToLower() &&
             //    c.ExpiryDate.Date == request.ExpiryDate.Date);
 
-            var card = _cards.Find(c =>
-    c.CardNumber == request.CardNumber &&
-    c.CardHolderName.ToLower() == request.CardHolderName.ToLower() &&
-    c.ExpiryDate.HasValue &&
-    request.ExpiryDate.HasValue &&
-    c.ExpiryDate.Value.Date == request.ExpiryDate.Value.Date);
+    //        var card = _cards.Find(c =>
+    //c.CardNumber == request.CardNumber &&
+    //c.CardHolderName.ToLower() == request.CardHolderName.ToLower() &&
+    //c.ExpiryDate.HasValue &&
+    //request.ExpiryDate.HasValue &&
+    //c.ExpiryDate.Value.Date == request.ExpiryDate.Value.Date);
 
 
             if (card == null)

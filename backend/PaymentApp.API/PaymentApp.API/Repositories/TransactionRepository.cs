@@ -1,35 +1,37 @@
-﻿using PaymentApp.API.DTOs;
+﻿using Microsoft.EntityFrameworkCore;
+using PaymentApp.API.Data;
+using PaymentApp.API.DTOs;
 using PaymentApp.API.Models;
 
-namespace PaymentApp.API.Services
+namespace PaymentApp.API.Repositories
 {
-    public class PaymentTransactionStore : IPaymentTransactionStore
+    public class TransactionRepository : ITransactionRepository
     {
-        private readonly List<Transactions> _transactions;
+        private readonly AppDbContext _context;
 
-        public PaymentTransactionStore()
+        public TransactionRepository(AppDbContext context)
         {
-            _transactions = new List<Transactions>();
+            _context = context;
         }
 
-        public List<Transactions> GetUnconfirmedTransactions()
+        public async Task AddAsync(Transactions tx)
         {
-            return _transactions.Where(t => !t.IsConfirmed).ToList();
+            await _context.Transactions.AddAsync(tx);
         }
 
-        public void Add(Transactions tx)
+        public async Task<Transactions?> GetByTransactionIdAsync(string transactionId)
         {
-            _transactions.Add(tx);
+            return await _context.Transactions.FirstOrDefaultAsync(t => t.TransactionId == transactionId);
         }
 
-        public Transactions Get(string transactionId)
+        public async Task<List<Transactions>> GetUnconfirmedTransactionsAsync()
         {
-            return _transactions.FirstOrDefault(t => t.TransactionId == transactionId);
+            return await _context.Transactions.Where(t => !t.IsConfirmed).ToListAsync();
         }
 
-        public IEnumerable<PaymentReportResultDto> GetFilteredTransactions(PaymentReportFilterDto filter)
+        public async Task<List<PaymentReportResultDto>> GetFilteredAsync(PaymentReportFilterDto filter)
         {
-            var query = _transactions.AsQueryable();
+            var query = _context.Transactions.AsQueryable();
 
             if (!string.IsNullOrEmpty(filter.CardNumber))
                 query = query.Where(t => t.CardNumber == filter.CardNumber);
@@ -50,7 +52,7 @@ namespace PaymentApp.API.Services
             if (filter.EndDate.HasValue)
                 query = query.Where(t => t.CreatedAt <= filter.EndDate.Value);
 
-            var paginated = query
+            return await query
                 .Skip((filter.PageNumber - 1) * filter.PageSize)
                 .Take(filter.PageSize)
                 .Select(t => new PaymentReportResultDto
@@ -62,35 +64,33 @@ namespace PaymentApp.API.Services
                     IsRefunded = t.IsRefunded,
                     CreatedAt = t.CreatedAt.Value
                 })
-                .ToList();
-
-            return paginated;
+                .ToListAsync();
         }
 
-
-        public IEnumerable<CardBalanceReportDto> GetCardBalances(CardBalanceReportFilterDto filter)
+        public async Task<List<CardBalanceReportDto>> GetCardBalancesAsync(CardBalanceReportFilterDto filter)
         {
-            var query = _transactions
+            var query = _context.Transactions
                 .Where(t => t.IsConfirmed && !t.IsRefunded);
 
             if (!string.IsNullOrEmpty(filter.CardNumber))
-            {
                 query = query.Where(t => t.CardNumber == filter.CardNumber);
-            }
 
-            var grouped = query
+            return await query
                 .GroupBy(t => t.CardNumber)
                 .Select(g => new CardBalanceReportDto
                 {
                     CardNumber = g.Key,
                     TotalSpent = g.Sum(t => t.Amount.Value),
                     RemainingBalance = 10000 - g.Sum(t => t.Amount.Value)
-                });
-
-            return grouped
+                })
                 .Skip((filter.PageNumber.Value - 1) * filter.PageSize.Value)
                 .Take(filter.PageSize.Value)
-                .ToList();
+                .ToListAsync();
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

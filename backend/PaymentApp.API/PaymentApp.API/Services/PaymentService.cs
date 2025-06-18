@@ -1,29 +1,27 @@
 ﻿using PaymentApp.API.DTOs;
 using PaymentApp.API.Models;
+using PaymentApp.API.Repositories;
 
 namespace PaymentApp.API.Services
 {
     public class PaymentService : IPaymentService
     {
-        private readonly List<Card> _cards;
-        private readonly List<Transactions> _transactions;
-        private readonly IPaymentTransactionStore _transactionStore;
+        private readonly ITransactionRepository _transactionRepository;
+        private readonly ICardRepository _cardRepository;
 
-        public PaymentService(IPaymentTransactionStore transactionStore)
+        public PaymentService(ITransactionRepository transactionRepository, ICardRepository cardRepository)
         {
-            _transactionStore = transactionStore;
-            // Use the same in-memory card list or inject from DB later
-            _cards = new()
-            {
-                new Card { CardNumber = "1234567812345678", CardHolderName = "John Doe", ExpiryDate = DateTime.UtcNow.AddYears(1), IsActive = true, Balance = 1000 }
-            };
-
-            _transactions = new();
+            _transactionRepository = transactionRepository;
+            _cardRepository = cardRepository;
         }
 
         public async Task<PaymentResponseDto> ProcessPaymentAsync(PaymentRequestDto request)
         {
-            var card = _cards.FirstOrDefault(c => c.CardNumber == request.CardNumber);
+            var card = await _cardRepository.GetValidCardAsync(
+                request.CardNumber,
+                "", // card holder name is not passed in this method, you may want to change this
+                null // expiry date is not checked here
+            );
 
             if (card == null || !card.IsActive || card.ExpiryDate < DateTime.UtcNow)
                 return new PaymentResponseDto { Message = "Invalid or inactive card" };
@@ -31,11 +29,10 @@ namespace PaymentApp.API.Services
             if (card.Balance < request.Amount)
                 return new PaymentResponseDto { Message = "Insufficient balance" };
 
-            // Hold amount (just deduct for now, no confirm yet)
             card.Balance -= request.Amount;
+            await _cardRepository.UpdateAsync(card);
 
-            // Generate transaction and refund code
-            var transactionId = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 16); // 16-char
+            var transactionId = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 16);
             var refundCode = new Random().Next(1000, 9999).ToString();
 
             var transaction = new Transactions
@@ -49,8 +46,8 @@ namespace PaymentApp.API.Services
                 IsConfirmed = false
             };
 
-            //_transactions.Add(transaction);
-            _transactionStore.Add(transaction);
+            await _transactionRepository.AddAsync(transaction);
+            await _transactionRepository.SaveChangesAsync();
 
             return new PaymentResponseDto
             {
@@ -59,5 +56,44 @@ namespace PaymentApp.API.Services
                 Message = "Payment processed and held successfully"
             };
         }
+
+        //public async Task<PaymentResponseDto> ProcessPaymentAsync(PaymentRequestDto request)
+        //{
+        //    var card = _cards.FirstOrDefault(c => c.CardNumber == request.CardNumber);
+
+        //    if (card == null || !card.IsActive || card.ExpiryDate < DateTime.UtcNow)
+        //        return new PaymentResponseDto { Message = "Invalid or inactive card" };
+
+        //    if (card.Balance < request.Amount)
+        //        return new PaymentResponseDto { Message = "Insufficient balance" };
+
+        //    // Hold amount (just deduct for now, no confirm yet)
+        //    card.Balance -= request.Amount;
+
+        //    // Generate transaction and refund code
+        //    var transactionId = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 16); // 16-char
+        //    var refundCode = new Random().Next(1000, 9999).ToString();
+
+        //    var transaction = new Transactions
+        //    {
+        //        Id = Guid.NewGuid(),
+        //        CardNumber = card.CardNumber,
+        //        Amount = request.Amount,
+        //        TransactionId = transactionId,
+        //        RefundCode = refundCode,
+        //        CreatedAt = DateTime.UtcNow,
+        //        IsConfirmed = false
+        //    };
+
+        //    //_transactions.Add(transaction);
+        //    _transactionStore.Add(transaction);
+
+        //    return new PaymentResponseDto
+        //    {
+        //        TransactionId = transaction.TransactionId,
+        //        RefundCode = transaction.RefundCode,
+        //        Message = "Payment processed and held successfully"
+        //    };
+        //}
     }
 }

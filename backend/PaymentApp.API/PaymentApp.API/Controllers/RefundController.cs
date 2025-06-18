@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PaymentApp.API.Models;
+using PaymentApp.API.Repositories;
 using PaymentApp.API.Services;
 
 namespace PaymentApp.API.Controllers
@@ -8,19 +9,19 @@ namespace PaymentApp.API.Controllers
     [Route("api/[controller]")]
     public class RefundController : ControllerBase
     {
-        private readonly IPaymentTransactionStore _transactionStore;
+        private readonly ITransactionRepository _transactionRepository;
         private readonly ILogger<RefundController> _logger;
 
-        public RefundController(IPaymentTransactionStore transactionStore, ILogger<RefundController> logger)
+        public RefundController(ITransactionRepository transactionRepository, ILogger<RefundController> logger)
         {
-            _transactionStore = transactionStore;
+            _transactionRepository = transactionRepository;
             _logger = logger;
         }
 
         [HttpPost]
-        public IActionResult Refund([FromBody] RefundRequest request)
+        public async Task<IActionResult> Refund([FromBody] RefundRequest request)
         {
-            var transaction = _transactionStore.Get(request.TransactionId);
+            var transaction = await _transactionRepository.GetByTransactionIdAsync(request.TransactionId);
             if (transaction == null)
             {
                 return NotFound("Transaction not found.");

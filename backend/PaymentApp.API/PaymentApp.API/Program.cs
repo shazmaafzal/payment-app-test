@@ -2,6 +2,7 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using PaymentApp.API.BackGround_Worker;
 using PaymentApp.API.Data;
+using PaymentApp.API.Repositories;
 using PaymentApp.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,8 +28,11 @@ builder.Services.AddControllers();
 //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
 builder.Services.AddScoped<ICardService, CardService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
-builder.Services.AddSingleton<IPaymentTransactionStore, PaymentTransactionStore>();
 builder.Services.AddHostedService<PaymentConfirmationWorker>();
+
+builder.Services.AddScoped<ICardRepository, CardRepository>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+
 
 //builder.Logging.ClearProviders();
 //builder.Logging.AddConsole();

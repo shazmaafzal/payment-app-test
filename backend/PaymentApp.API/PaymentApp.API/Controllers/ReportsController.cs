@@ -2,6 +2,7 @@
 using PaymentApp.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using PaymentApp.API.Repositories;
 
 namespace PaymentApp.API.Controllers
 {
@@ -12,24 +13,24 @@ namespace PaymentApp.API.Controllers
     //[ApiController]
     public class ReportsController : ControllerBase
     {
-        private readonly IPaymentTransactionStore _transactionStore;
+        private readonly ITransactionRepository _transactionRepository;
 
-        public ReportsController(IPaymentTransactionStore transactionStore)
+        public ReportsController(ITransactionRepository transactionRepository)
         {
-            _transactionStore = transactionStore;
+            _transactionRepository = transactionRepository;
         }
 
         [HttpGet("GetPayments")]
         public IActionResult GetPayments([FromQuery] PaymentReportFilterDto filter)
         {
-            var result = _transactionStore.GetFilteredTransactions(filter);
+            var result = _transactionRepository.GetFilteredAsync(filter);
             return Ok(result);
         }
 
         [HttpGet("GetCardBalances")]
         public IActionResult GetCardBalances([FromQuery] CardBalanceReportFilterDto filter)
         {
-            var result = _transactionStore.GetCardBalances(filter);
+            var result = _transactionRepository.GetCardBalancesAsync(filter);
             return Ok(result);
         }
     }

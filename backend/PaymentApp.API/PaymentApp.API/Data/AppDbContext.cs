@@ -7,7 +7,7 @@ namespace PaymentApp.API.Data
     {
         public DbSet<Card> Cards { get; set; }
         public DbSet<RefundRequest> RefundRequests { get; set; }
-        public DbSet<Transactions> Transactionss { get; set; }
+        public DbSet<Transactions> Transactions { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

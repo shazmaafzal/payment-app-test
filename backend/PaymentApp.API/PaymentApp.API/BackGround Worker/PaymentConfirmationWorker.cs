@@ -1,16 +1,18 @@
-﻿using PaymentApp.API.Services;
+﻿using PaymentApp.API.Repositories;
+using PaymentApp.API.Services;
 
 namespace PaymentApp.API.BackGround_Worker
 {
     public class PaymentConfirmationWorker : BackgroundService
     {
         private readonly ILogger<PaymentConfirmationWorker> _logger;
-        private readonly IPaymentTransactionStore _transactionStore;
+        //private readonly ITransactionRepository _transactionRepository;
+        private readonly IServiceScopeFactory _scopeFactory;
 
-        public PaymentConfirmationWorker(ILogger<PaymentConfirmationWorker> logger, IPaymentTransactionStore transactionStore)
+        public PaymentConfirmationWorker(ILogger<PaymentConfirmationWorker> logger, IServiceScopeFactory scopeFactory)
         {
             _logger = logger;
-            _transactionStore = transactionStore;
+            _scopeFactory = scopeFactory;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -22,9 +24,14 @@ namespace PaymentApp.API.BackGround_Worker
             {
                 try
                 {
+                    using var scope = _scopeFactory.CreateScope();
+                    var transactionRepository = scope.ServiceProvider.GetRequiredService<ITransactionRepository>();
+
+                    var allUnconfirmed = await transactionRepository.GetUnconfirmedTransactionsAsync();
+
                     var now = DateTime.UtcNow;
 
-                    var toConfirm = _transactionStore.GetUnconfirmedTransactions()
+                    var toConfirm = allUnconfirmed
                         .Where(tx => tx.CreatedAt.HasValue && tx.CreatedAt.Value.Date < now.Date)
                         .ToList();
 
@@ -33,6 +40,10 @@ namespace PaymentApp.API.BackGround_Worker
                         tx.IsConfirmed = true;
                         _logger.LogInformation($"Auto-confirmed Transaction: {tx.TransactionId}");
                     }
+
+                    if (toConfirm.Any())
+                        await transactionRepository.SaveChangesAsync();
+                        //await _transactionRepository.SaveChangesAsync();
                 }
                 catch (Exception ex)
                 {
