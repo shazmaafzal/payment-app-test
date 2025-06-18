@@ -2,11 +2,11 @@
 
 namespace PaymentApp.API.Controllers
 {
-    public class ReportController : Controller
+    public class ReportController : ControllerBase
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
     }
 }

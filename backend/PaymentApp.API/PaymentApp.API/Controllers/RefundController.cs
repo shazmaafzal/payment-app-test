@@ -2,11 +2,11 @@
 
 namespace PaymentApp.API.Controllers
 {
-    public class RefundController : Controller
+    public class RefundController : ControllerBase
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
     }
 }

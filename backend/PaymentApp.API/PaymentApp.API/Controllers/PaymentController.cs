@@ -1,12 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PaymentApp.API.DTOs;
+using PaymentApp.API.Services;
 
 namespace PaymentApp.API.Controllers
 {
-    public class PaymentController : Controller
+    [ApiController]
+    [Route("api/[controller]")]
+    public class PaymentController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly IPaymentService _paymentService;
+
+        public PaymentController(IPaymentService paymentService)
         {
-            return View();
+            _paymentService = paymentService;
+        }
+
+        [HttpPost("process")]
+        public async Task<IActionResult> Process([FromBody] PaymentRequestDto request)
+        {
+            var result = await _paymentService.ProcessPaymentAsync(request);
+
+            if (string.IsNullOrEmpty(result.TransactionId))
+                return BadRequest(result.Message);
+
+            return Ok(result);
         }
     }
 }

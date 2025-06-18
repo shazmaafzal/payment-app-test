@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 //builder.Services.AddControllers()
 //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
 builder.Services.AddScoped<ICardService, CardService>();
-
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

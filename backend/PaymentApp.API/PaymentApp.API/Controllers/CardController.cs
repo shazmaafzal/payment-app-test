@@ -6,7 +6,10 @@ namespace PaymentApp.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CardController : Controller
+
+    //[Route("api/[controller]/{action}")]
+    //[ApiController]
+    public class CardController : ControllerBase
     {
         private readonly ICardService _cardService;
 
