@@ -57,10 +57,10 @@ namespace PaymentApp.API.Services
                 {
                     TransactionId = t.TransactionId,
                     CardNumber = t.CardNumber,
-                    Amount = t.Amount,
+                    Amount = t.Amount.Value,
                     IsConfirmed = t.IsConfirmed,
                     IsRefunded = t.IsRefunded,
-                    CreatedAt = t.CreatedAt
+                    CreatedAt = t.CreatedAt.Value
                 })
                 .ToList();
 
@@ -83,13 +83,13 @@ namespace PaymentApp.API.Services
                 .Select(g => new CardBalanceReportDto
                 {
                     CardNumber = g.Key,
-                    TotalSpent = g.Sum(t => t.Amount),
-                    RemainingBalance = 10000 - g.Sum(t => t.Amount)
+                    TotalSpent = g.Sum(t => t.Amount.Value),
+                    RemainingBalance = 10000 - g.Sum(t => t.Amount.Value)
                 });
 
             return grouped
-                .Skip((filter.PageNumber - 1) * filter.PageSize)
-                .Take(filter.PageSize)
+                .Skip((filter.PageNumber.Value - 1) * filter.PageSize.Value)
+                .Take(filter.PageSize.Value)
                 .ToList();
         }
     }

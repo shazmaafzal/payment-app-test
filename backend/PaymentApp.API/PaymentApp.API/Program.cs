@@ -1,10 +1,16 @@
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using PaymentApp.API.BackGround_Worker;
+using PaymentApp.API.Data;
 using PaymentApp.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost",

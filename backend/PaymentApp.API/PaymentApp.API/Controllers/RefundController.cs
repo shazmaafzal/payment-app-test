@@ -32,7 +32,12 @@ namespace PaymentApp.API.Controllers
             }
 
             var now = DateTime.UtcNow;
-            if (now.Date > transaction.CreatedAt.Date) // past midnight
+            //if (now.Date > transaction.CreatedAt.Date) // past midnight
+            //{
+            //    return BadRequest("Refund period expired.");
+            //}
+
+            if (!transaction.CreatedAt.HasValue || now.Date > transaction.CreatedAt.Value.Date)
             {
                 return BadRequest("Refund period expired.");
             }

@@ -2,7 +2,7 @@
 {
     public class PaymentRequestDto
     {
-        public string CardNumber { get; set; }
-        public decimal Amount { get; set; }
+        public string? CardNumber { get; set; }
+        public decimal? Amount { get; set; }
     }
 }

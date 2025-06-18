@@ -25,7 +25,7 @@ namespace PaymentApp.API.BackGround_Worker
                     var now = DateTime.UtcNow;
 
                     var toConfirm = _transactionStore.GetUnconfirmedTransactions()
-                        .Where(tx => tx.CreatedAt.Date < now.Date)
+                        .Where(tx => tx.CreatedAt.HasValue && tx.CreatedAt.Value.Date < now.Date)
                         .ToList();
 
                     foreach (var tx in toConfirm)

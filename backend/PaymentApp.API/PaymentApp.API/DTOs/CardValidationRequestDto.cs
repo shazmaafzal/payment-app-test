@@ -2,8 +2,8 @@
 {
     public class CardValidationRequestDto
     {
-        public string CardNumber { get; set; }
-        public string CardHolderName { get; set; }
-        public DateTime ExpiryDate { get; set; }
+        public string? CardNumber { get; set; }
+        public string? CardHolderName { get; set; }
+        public DateTime? ExpiryDate { get; set; }
     }
 }
