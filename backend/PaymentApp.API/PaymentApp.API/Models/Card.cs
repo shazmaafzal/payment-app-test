@@ -8,5 +8,7 @@
         public DateTime ExpiryDate { get; set; }
         public bool IsActive { get; set; }
         public decimal Balance { get; set; }
+
+        //CVV is remaining
     }
 }

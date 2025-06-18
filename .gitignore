@@ -1,0 +1,20 @@
+## Visual Studio
+.vs/
+*.user
+*.suo
+
+## Build Output
+bin/
+obj/
+
+## Others
+*.log
+*.tmp
+*.cache
+*.db
+
+## VS Code (optional)
+.vscode/
+
+## MacOS/Linux
+.DS_Store
