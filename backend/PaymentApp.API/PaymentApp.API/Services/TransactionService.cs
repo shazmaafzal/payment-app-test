@@ -12,12 +12,12 @@ namespace PaymentApp.API.Services
         {
             _transactionRepository = transactionRepository;
         }
-        public async Task<List<PaymentReportResultDto>> GetFilteredAsync(PaymentReportFilterDto filter)
+        public async Task<PagedResult<PaymentReportResultDto>> GetFilteredAsync(PaymentReportFilterDto filter)
         {
             return await _transactionRepository.GetFilteredAsync(filter);
         }
 
-        public async Task<List<CardBalanceReportDto>> GetCardBalancesAsync(CardBalanceReportFilterDto filter)
+        public async Task<PagedResult<CardBalanceReportDto>> GetCardBalancesAsync(CardBalanceReportFilterDto filter)
         {
             return await _transactionRepository.GetCardBalancesAsync(filter);
         }

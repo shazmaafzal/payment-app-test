@@ -9,11 +9,13 @@ namespace PaymentApp.API.Services
     public class RefundService : IRefundService
     {
         private readonly ITransactionRepository _transactionRepository;
+        private readonly ICardRepository _cardRepository;
         private readonly ILogger<RefundController> _logger;
 
-        public RefundService(ITransactionRepository transactionRepository, ILogger<RefundController> logger)
+        public RefundService(ITransactionRepository transactionRepository, ICardRepository cardRepository, ILogger<RefundController> logger)
         {
             _transactionRepository = transactionRepository;
+            _cardRepository = cardRepository;
             _logger = logger;
         }
 
@@ -41,6 +43,15 @@ namespace PaymentApp.API.Services
             {
                 return new ResponseDto { IsValid = false, Message = "Transaction already refunded." };
             }
+
+            var card = await _cardRepository.GetByCardNumberAsync(transaction.CardNumber);
+
+            if (card == null)
+            {
+                return new ResponseDto { IsValid = false, Message = "Card not found for refund." };
+            }
+            card.Balance += transaction.Amount ?? 0;
+            await _cardRepository.UpdateAsync(card);
 
             transaction.IsRefunded = true;
             transaction.IsConfirmed = false;

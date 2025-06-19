@@ -4451,19 +4451,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Shazma.Afzal\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\PaymentApp.API.csproj",
+      "projectUniqueName": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\PaymentApp.API.csproj",
       "projectName": "PaymentApp.API",
-      "projectPath": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\PaymentApp.API.csproj",
-      "packagesPath": "C:\\Users\\Shazma.Afzal\\.nuget\\packages\\",
-      "outputPath": "D:\\Shazma Test\\Part 1\\Payment Dashboard App\\backend\\PaymentApp.API\\PaymentApp.API\\obj\\",
+      "projectPath": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\PaymentApp.API.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Shazma.Afzal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

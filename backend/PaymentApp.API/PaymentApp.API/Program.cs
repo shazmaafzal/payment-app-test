@@ -29,6 +29,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<ICardService, CardService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IRefundService, RefundService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddHostedService<PaymentConfirmationWorker>();
 
 builder.Services.AddScoped<ICardRepository, CardRepository>();

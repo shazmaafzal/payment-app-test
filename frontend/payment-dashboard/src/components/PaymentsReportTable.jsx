@@ -14,7 +14,6 @@ function PaymentsReportTable() {
     });
     const [summary, setSummary] = useState(null);
     const [trendData, setTrendData] = useState([]);
-
     const [inputValues, setInputValues] = useState({
         cardNumber: '',
         status: '',
@@ -25,40 +24,41 @@ function PaymentsReportTable() {
     const [payments, setPayments] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
 
-    const buildParams = () => {
+    const buildParams = (customFilters = filters) => {
         const params = {
-            cardNumber: filters.cardNumber,
-            status: filters.status,
-            pageNumber: filters.pageNumber,
-            pageSize: filters.pageSize,
+            cardNumber: customFilters.cardNumber,
+            status: customFilters.status,
+            pageNumber: customFilters.pageNumber,
+            pageSize: customFilters.pageSize,
         };
-        if (filters.startDate) params.startDate = filters.startDate;
-        if (filters.endDate) params.endDate = filters.endDate;
+        if (customFilters.startDate) params.startDate = customFilters.startDate;
+        if (customFilters.endDate) params.endDate = customFilters.endDate;
         return params;
     };
 
     const totalPages = Math.ceil(totalCount / filters.pageSize);
 
-    const fetchPayments = async () => {
+    const fetchPayments = async (customFilters = filters) => {
         try {
-            const response = await apiClient.get('/reports/GetPayments', { params: buildParams() });
-            setPayments(response.data);
+            setPayments([]);
+            const response = await apiClient.get('/reports/GetPayments', {
+                params: buildParams(customFilters),
+            });
+            setPayments(response.data.items);
             setTotalCount(response.data.totalCount);
         } catch (error) {
             console.error('Error fetching payments:', error);
         }
     };
 
-    useEffect(() => {
-        fetchPayments();
-    }, [filters]);
-
     const handleChange = (e) => {
         setInputValues({ ...inputValues, [e.target.name]: e.target.value });
     };
 
     const handleFilterClick = () => {
-        setFilters({ ...inputValues, pageNumber: 1, pageSize: 5 });
+        const newFilters = { ...inputValues, pageNumber: 1, pageSize: 5 };
+        setFilters(newFilters);
+        fetchPayments(newFilters);
     };
 
     useEffect(() => {
@@ -81,6 +81,12 @@ function PaymentsReportTable() {
             .then(res => setPieData(res.data))
             .catch(err => console.error('Error fetching pie data:', err));
     }, []);
+
+    const goToPage = async (newPageNumber) => {
+        const newFilters = { ...filters, pageNumber: newPageNumber };
+        await setFilters(newFilters);
+        await fetchPayments(newFilters);
+    };
 
     return (
         <div className="mb-5">
@@ -172,8 +178,6 @@ function PaymentsReportTable() {
                 </div>
             </div>
 
-            {/* table and pagination code remains same */}
-
             <table className="table table-bordered table-striped">
                 <thead className="table-light">
                     <tr>
@@ -209,21 +213,15 @@ function PaymentsReportTable() {
                 <button
                     className="btn btn-outline-secondary"
                     disabled={filters.pageNumber === 1}
-                    onClick={() =>
-                        setFilters((prev) => ({
-                            ...prev,
-                            pageNumber: Math.max(prev.pageNumber - 1, 1),
-                        }))
-                    }
+                    onClick={() => goToPage(Math.max(filters.pageNumber - 1, 1))}
                 >
                     Prev
                 </button>
                 <span>Page: {filters.pageNumber} of {Math.ceil(totalCount / filters.pageSize)}</span>
-                {/* <span>Page: {filters.pageNumber}</span> */}
                 <button
                     className="btn btn-outline-secondary"
                     disabled={filters.pageNumber >= Math.ceil(totalCount / filters.pageSize)}
-                    onClick={() => setFilters((prev) => ({ ...prev, pageNumber: prev.pageNumber + 1 }))}
+                    onClick={() => goToPage(filters.pageNumber + 1)}
                 >
                     Next
                 </button>

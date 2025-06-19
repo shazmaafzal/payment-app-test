@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PaymentApp.API.Data;
 using PaymentApp.API.DTOs;
 using PaymentApp.API.Models;
@@ -46,7 +47,7 @@ namespace PaymentApp.API.Repositories
             return await _context.Transactions.AsNoTracking().Where(t => !t.IsConfirmed).ToListAsync();
         }
 
-        public async Task<List<PaymentReportResultDto>> GetFilteredAsync(PaymentReportFilterDto filter)
+        public async Task<PagedResult<PaymentReportResultDto>> GetFilteredAsync(PaymentReportFilterDto filter)
         {
             var query = _context.Transactions.AsNoTracking().AsQueryable();
 
@@ -69,7 +70,9 @@ namespace PaymentApp.API.Repositories
             if (filter.EndDate.HasValue)
                 query = query.Where(t => t.CreatedAt <= filter.EndDate.Value);
 
-            return await query
+            var totalCount = await query.CountAsync();
+
+            var items = await query
                 .Skip((filter.PageNumber - 1) * filter.PageSize)
                 .Take(filter.PageSize)
                 .Select(t => new PaymentReportResultDto
@@ -82,35 +85,91 @@ namespace PaymentApp.API.Repositories
                     CreatedAt = t.CreatedAt.Value
                 })
                 .ToListAsync();
+
+            return new PagedResult<PaymentReportResultDto>
+            {
+                Items = items,
+                TotalCount = totalCount
+            };
         }
 
-        public async Task<List<CardBalanceReportDto>> GetCardBalancesAsync(CardBalanceReportFilterDto filter)
+        public async Task<PagedResult<CardBalanceReportDto>> GetCardBalancesAsync(CardBalanceReportFilterDto filter)
         {
-            var query = _context.Transactions.AsNoTracking()
-                .Where(t => t.IsConfirmed && !t.IsRefunded);
+            var query = from card in _context.Cards
+                        where card.IsActive
+                        select new
+                        {
+                            card.CardNumber,
+                            card.Balance,
+                            TotalSpent = _context.Transactions
+                                .Where(t => t.CardNumber == card.CardNumber && t.IsConfirmed && !t.IsRefunded)
+                                .Sum(t => t.Amount) ?? 0
+                        };
+
+            var projected = query.Select(x => new CardBalanceReportDto
+            {
+                CardNumber = x.CardNumber,
+                TotalSpent = x.TotalSpent,
+                RemainingBalance = (x.Balance ?? 0) - x.TotalSpent
+            });
 
             if (!string.IsNullOrEmpty(filter.CardNumber))
-                query = query.Where(t => t.CardNumber == filter.CardNumber);
-
-            var grouped = query
-    .GroupBy(t => t.CardNumber)
-    .Select(g => new CardBalanceReportDto
-    {
-        CardNumber = g.Key,
-        TotalSpent = g.Sum(t => t.Amount.Value),
-        RemainingBalance = 10000 - g.Sum(t => t.Amount.Value)
-    });
+                projected = projected.Where(c => c.CardNumber == filter.CardNumber);
 
             if (filter.MinBalance.HasValue)
-                grouped = grouped.Where(r => r.RemainingBalance >= filter.MinBalance.Value);
+                projected = projected.Where(c => c.RemainingBalance >= filter.MinBalance.Value);
 
             if (filter.MaxBalance.HasValue)
-                grouped = grouped.Where(r => r.RemainingBalance <= filter.MaxBalance.Value);
+                projected = projected.Where(c => c.RemainingBalance <= filter.MaxBalance.Value);
 
-            return await grouped
-    .Skip((filter.PageNumber - 1) * filter.PageSize)
-    .Take(filter.PageSize)
-    .ToListAsync();
+            var totalCount = await projected.CountAsync();
+
+            var items = await projected
+                .Skip((filter.PageNumber - 1) * filter.PageSize)
+                .Take(filter.PageSize)
+                .ToListAsync();
+
+            return new PagedResult<CardBalanceReportDto>
+            {
+                Items = items,
+                TotalCount = totalCount
+            };
+
+
+
+            //var query = _context.Transactions.AsNoTracking()
+            //    .Where(t => t.IsConfirmed && !t.IsRefunded);
+
+            //if (!string.IsNullOrEmpty(filter.CardNumber))
+            //    query = query.Where(t => t.CardNumber == filter.CardNumber);
+
+            //var grouped = query
+            //    .GroupBy(t => t.CardNumber)
+            //    .Select(g => new CardBalanceReportDto
+            //    {
+            //        CardNumber = g.Key,
+            //        TotalSpent = g.Sum(t => t.Amount.Value),
+            //        RemainingBalance = 10000 - g.Sum(t => t.Amount.Value)
+            //    });
+
+            //if (filter.MinBalance.HasValue)
+            //    grouped = grouped.Where(r => r.RemainingBalance >= filter.MinBalance.Value);
+
+            //if (filter.MaxBalance.HasValue)
+            //    grouped = grouped.Where(r => r.RemainingBalance <= filter.MaxBalance.Value);
+
+            //var totalCount = await grouped.CountAsync(); // 👈 Total after filter
+
+            //var items = await grouped
+            //    .Skip((filter.PageNumber - 1) * filter.PageSize)
+            //    .Take(filter.PageSize)
+            //    .ToListAsync();
+
+            //return new PagedResult<CardBalanceReportDto>
+            //{
+            //    Items = items,
+            //    TotalCount = totalCount
+            //};
         }
 
         public async Task<PaymentSummaryDto> GetPaymentSummaryAsync()

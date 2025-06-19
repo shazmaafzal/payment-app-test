@@ -39,11 +39,15 @@ namespace PaymentApp.API.BackGround_Worker
                     {
                         tx.IsConfirmed = true;
                         _logger.LogInformation($"Auto-confirmed Transaction: {tx.TransactionId}");
+                        await transactionRepository.UpdateAsync(tx);
                     }
 
                     if (toConfirm.Any())
+                    {
                         await transactionRepository.SaveChangesAsync();
                         //await _transactionRepository.SaveChangesAsync();
+                        _logger.LogInformation("Done");
+                    }
                 }
                 catch (Exception ex)
                 {

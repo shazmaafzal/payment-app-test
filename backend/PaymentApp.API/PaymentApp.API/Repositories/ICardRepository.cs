@@ -6,5 +6,6 @@ namespace PaymentApp.API.Repositories
     {
         Task<Card?> GetValidCardAsync(string cardNumber, decimal? cvv, DateTime? expiryDate);
         Task UpdateAsync(Card card);
+        Task<Card?> GetByCardNumberAsync(string cardNumber);
     }
 }

@@ -3,8 +3,8 @@ import apiClient from '../api/apiClient';
 
 function CardBalanceTable() {
     const [balances, setBalances] = useState([]);
+    const [totalCount, setTotalCount] = useState(0);
 
-    // 🔹 Holds input field values
     const [filters, setFilters] = useState({
         cardNumber: '',
         minBalance: '',
@@ -12,9 +12,6 @@ function CardBalanceTable() {
         pageNumber: 1,
         pageSize: 5
     });
-
-    // 🔹 Holds only the actual query used for the API call
-    const [queryParams, setQueryParams] = useState(filters);
 
     const buildParams = (params) => {
         const result = {};
@@ -27,37 +24,44 @@ function CardBalanceTable() {
         return result;
     };
 
-    const fetchCardBalances = async () => {
+    const fetchCardBalances = async (params) => {
         try {
             const response = await apiClient.get('/reports/GetCardBalances', {
-                params: buildParams(queryParams)
+                params: buildParams(params)
             });
-            setBalances(response.data);
+            setBalances(response.data.items);
+            setTotalCount(response.data.totalCount);
         } catch (error) {
             console.error('Error fetching card balances:', error);
         }
     };
 
     useEffect(() => {
-        setFilters(prev => ({ ...prev, pageNumber: queryParams.pageNumber }));
-        fetchCardBalances();
-    }, [queryParams]);
+        fetchCardBalances(filters);
+    }, [filters]);
 
     const handleChange = (e) => {
         setFilters({ ...filters, [e.target.name]: e.target.value });
     };
 
     const applyFilter = () => {
-        setQueryParams({ ...filters, pageNumber: 1 });
+        setFilters(prev => ({ ...prev, pageNumber: 1 }));
+    };
+
+    const totalPages = Math.ceil(totalCount / filters.pageSize);
+
+    const goToPage = (page) => {
+        if (page >= 1 && page <= totalPages) {
+            setFilters(prev => ({ ...prev, pageNumber: page }));
+        }
     };
 
     return (
         <div className="mb-5">
             <h2 className="mb-3">Card Balance Report</h2>
-            <br></br>
             <div className="row g-2 mb-3">
                 <div className="col-md-3">
-                    <label htmlFor="cardNumber" className="form-label label-tight text-start">Card Number</label>
+                    <label htmlFor="cardNumber" className="form-label">Card Number</label>
                     <input
                         id="cardNumber"
                         className="form-control"
@@ -68,30 +72,27 @@ function CardBalanceTable() {
                     />
                 </div>
                 <div className="col-md-2">
-                    <label htmlFor="minBalance" className="form-label label-tight text-start">Min Balance</label>
+                    <label htmlFor="minBalance" className="form-label">Min Balance</label>
                     <input
                         id="minBalance"
                         className="form-control"
                         name="minBalance"
                         type="number"
-                        placeholder="Min Balance"
                         value={filters.minBalance}
                         onChange={handleChange}
                     />
                 </div>
                 <div className="col-md-2">
-                    <label htmlFor="maxBalance" className="form-label label-tight text-start">Max Balance</label>
+                    <label htmlFor="maxBalance" className="form-label">Max Balance</label>
                     <input
                         id="maxBalance"
                         className="form-control"
                         name="maxBalance"
                         type="number"
-                        placeholder="Max Balance"
                         value={filters.maxBalance}
                         onChange={handleChange}
                     />
                 </div>
-
                 <div className="col-md-2 d-flex align-items-end">
                     <button className="btn btn-primary w-100" onClick={applyFilter}>
                         Filter
@@ -103,7 +104,8 @@ function CardBalanceTable() {
                 <thead className="table-light">
                     <tr>
                         <th>Card Number</th>
-                        <th>Available Balance</th>
+                        <th>Total Spent</th>
+                        <th>Remaining Balance</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -111,12 +113,13 @@ function CardBalanceTable() {
                         balances.map((b, index) => (
                             <tr key={index}>
                                 <td>{b.cardNumber}</td>
-                                <td>{b.balance}</td>
+                                <td>{b.totalSpent}</td>
+                                <td>{b.remainingBalance}</td>
                             </tr>
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="2" className="text-center">
+                            <td colSpan="3" className="text-center">
                                 No results found
                             </td>
                         </tr>
@@ -128,24 +131,17 @@ function CardBalanceTable() {
                 <button
                     className="btn btn-outline-secondary"
                     disabled={filters.pageNumber === 1}
-                    onClick={() => {
-                        const newPage = Math.max(filters.pageNumber - 1, 1);
-                        const newFilters = { ...filters, pageNumber: newPage };
-                        setFilters(newFilters);
-                        setQueryParams(newFilters);
-                    }}
+                    onClick={() => goToPage(filters.pageNumber - 1)}
                 >
                     Prev
                 </button>
-                <span>Page: {filters.pageNumber}</span>
+                <span>
+                    Page: {filters.pageNumber} of {totalPages || 1}
+                </span>
                 <button
                     className="btn btn-outline-secondary"
-                    onClick={() => {
-                        const newPage = filters.pageNumber + 1;
-                        const newFilters = { ...filters, pageNumber: newPage };
-                        setFilters(newFilters);
-                        setQueryParams(newFilters);
-                    }}
+                    disabled={filters.pageNumber >= totalPages}
+                    onClick={() => goToPage(filters.pageNumber + 1)}
                 >
                     Next
                 </button>
