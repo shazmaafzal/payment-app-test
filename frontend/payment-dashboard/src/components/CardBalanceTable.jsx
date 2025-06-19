@@ -39,6 +39,7 @@ function CardBalanceTable() {
     };
 
     useEffect(() => {
+        setFilters(prev => ({ ...prev, pageNumber: queryParams.pageNumber }));
         fetchCardBalances();
     }, [queryParams]);
 
@@ -120,24 +121,24 @@ function CardBalanceTable() {
                 <button
                     className="btn btn-outline-secondary"
                     disabled={filters.pageNumber === 1}
-                    onClick={() =>
-                        setFilters((prev) => ({
-                            ...prev,
-                            pageNumber: Math.max(prev.pageNumber - 1, 1)
-                        }))
-                    }
+                    onClick={() => {
+                        const newPage = Math.max(filters.pageNumber - 1, 1);
+                        const newFilters = { ...filters, pageNumber: newPage };
+                        setFilters(newFilters);
+                        setQueryParams(newFilters);
+                    }}
                 >
                     Prev
                 </button>
                 <span>Page: {filters.pageNumber}</span>
                 <button
                     className="btn btn-outline-secondary"
-                    onClick={() =>
-                        setFilters((prev) => ({
-                            ...prev,
-                            pageNumber: prev.pageNumber + 1
-                        }))
-                    }
+                    onClick={() => {
+                        const newPage = filters.pageNumber + 1;
+                        const newFilters = { ...filters, pageNumber: newPage };
+                        setFilters(newFilters);
+                        setQueryParams(newFilters);
+                    }}
                 >
                     Next
                 </button>

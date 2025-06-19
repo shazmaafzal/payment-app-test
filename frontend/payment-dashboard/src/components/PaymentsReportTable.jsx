@@ -21,6 +21,7 @@ function PaymentsReportTable() {
     });
 
     const [payments, setPayments] = useState([]);
+    const [totalCount, setTotalCount] = useState(0);
 
     const buildParams = () => {
         const params = {
@@ -34,10 +35,13 @@ function PaymentsReportTable() {
         return params;
     };
 
+    const totalPages = Math.ceil(totalCount / filters.pageSize);
+
     const fetchPayments = async () => {
         try {
             const response = await apiClient.get('/reports/GetPayments', { params: buildParams() });
             setPayments(response.data);
+            setTotalCount(response.data.totalCount);
         } catch (error) {
             console.error('Error fetching payments:', error);
         }
@@ -156,9 +160,11 @@ function PaymentsReportTable() {
                 >
                     Prev
                 </button>
-                <span>Page: {filters.pageNumber}</span>
+                <span>Page: {filters.pageNumber} of {Math.ceil(totalCount / filters.pageSize)}</span>
+                {/* <span>Page: {filters.pageNumber}</span> */}
                 <button
                     className="btn btn-outline-secondary"
+                    disabled={filters.pageNumber >= Math.ceil(totalCount / filters.pageSize)}
                     onClick={() => setFilters((prev) => ({ ...prev, pageNumber: prev.pageNumber + 1 }))}
                 >
                     Next

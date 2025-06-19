@@ -3,7 +3,9 @@
     public class CardBalanceReportFilterDto
     {
         public string? CardNumber { get; set; }
-        public int? PageNumber { get; set; } = 1;
-        public int? PageSize { get; set; } = 10;
+        public decimal? MinBalance { get; set; }
+        public decimal? MaxBalance { get; set; }
+        public int PageNumber { get; set; } = 1;
+        public int PageSize { get; set; } = 5;
     }
 }

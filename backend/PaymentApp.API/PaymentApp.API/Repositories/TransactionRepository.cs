@@ -92,17 +92,25 @@ namespace PaymentApp.API.Repositories
             if (!string.IsNullOrEmpty(filter.CardNumber))
                 query = query.Where(t => t.CardNumber == filter.CardNumber);
 
-            return await query
-                .GroupBy(t => t.CardNumber)
-                .Select(g => new CardBalanceReportDto
-                {
-                    CardNumber = g.Key,
-                    TotalSpent = g.Sum(t => t.Amount.Value),
-                    RemainingBalance = 10000 - g.Sum(t => t.Amount.Value)
-                })
-                .Skip((filter.PageNumber.Value - 1) * filter.PageSize.Value)
-                .Take(filter.PageSize.Value)
-                .ToListAsync();
+            var grouped = query
+    .GroupBy(t => t.CardNumber)
+    .Select(g => new CardBalanceReportDto
+    {
+        CardNumber = g.Key,
+        TotalSpent = g.Sum(t => t.Amount.Value),
+        RemainingBalance = 10000 - g.Sum(t => t.Amount.Value)
+    });
+
+            if (filter.MinBalance.HasValue)
+                grouped = grouped.Where(r => r.RemainingBalance >= filter.MinBalance.Value);
+
+            if (filter.MaxBalance.HasValue)
+                grouped = grouped.Where(r => r.RemainingBalance <= filter.MaxBalance.Value);
+
+            return await grouped
+    .Skip((filter.PageNumber - 1) * filter.PageSize)
+    .Take(filter.PageSize)
+    .ToListAsync();
         }
 
         public async Task SaveChangesAsync()
