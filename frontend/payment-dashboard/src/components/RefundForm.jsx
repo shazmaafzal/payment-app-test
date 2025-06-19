@@ -19,24 +19,6 @@ function RefundForm() {
         setIsSubmitting(true);
         setMessage('');
 
-        // try {
-        //   const response = await apiClient.post('/refund/ProcessRefund', {
-        //     transactionId: form.transactionId,
-        //     refundCode: form.refundCode
-        //   });
-
-        //   if (response.data.success) {
-        //     setMessage('Refund processed successfully.');
-        //   } else {
-        //     setMessage('Refund failed: ' + response.data.message);
-        //   }
-        // } catch (error) {
-        //   console.error(error);
-        //   setMessage('Error processing refund.');
-        // } finally {
-        //   setIsSubmitting(false);
-        // }
-
         try {
             const response = await apiClient.post('/refund/ProcessRefund', {
                 transactionId: form.transactionId,
@@ -58,16 +40,12 @@ function RefundForm() {
         } finally {
             setIsSubmitting(false);
         }
-
-
-
     };
 
     return (
         <div className="card border-0">
             <div className="card-body p-0">
                 <form onSubmit={handleSubmit} className="row g-4">
-
                     <div className="col-md-12">
                         <label className="form-label">Transaction ID</label>
                         <input

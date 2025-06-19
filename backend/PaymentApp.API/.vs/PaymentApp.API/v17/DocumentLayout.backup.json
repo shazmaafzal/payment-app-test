@@ -3,22 +3,6 @@
   "WorkspaceRootPath": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|f:\\todayyy test\\payment-app-test\\backend\\paymentapp.api\\paymentapp.api\\services\\refundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\services\\refundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|f:\\todayyy test\\payment-app-test\\backend\\paymentapp.api\\paymentapp.api\\repositories\\cardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\repositories\\cardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|f:\\todayyy test\\payment-app-test\\backend\\paymentapp.api\\paymentapp.api\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|f:\\todayyy test\\payment-app-test\\backend\\paymentapp.api\\paymentapp.api\\controllers\\refundcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\controllers\\refundcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|f:\\todayyy test\\payment-app-test\\backend\\paymentapp.api\\paymentapp.api\\repositories\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\repositories\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,8 +15,24 @@
       "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|f:\\todayyy test\\payment-app-test\\backend\\paymentapp.api\\paymentapp.api\\services\\refundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\services\\refundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|f:\\todayyy test\\payment-app-test\\backend\\paymentapp.api\\paymentapp.api\\controllers\\refundcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\controllers\\refundcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|f:\\todayyy test\\payment-app-test\\backend\\paymentapp.api\\paymentapp.api\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|f:\\todayyy test\\payment-app-test\\backend\\paymentapp.api\\paymentapp.api\\repositories\\icardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\repositories\\icardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|f:\\todayyy test\\payment-app-test\\backend\\paymentapp.api\\paymentapp.api\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|f:\\todayyy test\\payment-app-test\\backend\\paymentapp.api\\paymentapp.api\\models\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -109,10 +109,6 @@
       "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|f:\\todayyy test\\payment-app-test\\backend\\paymentapp.api\\paymentapp.api\\repositories\\icardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\repositories\\icardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|f:\\todayyy test\\payment-app-test\\backend\\paymentapp.api\\paymentapp.api\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{163B7E6B-0356-43F1-AC5E-2000A4DCE3E1}|PaymentApp.API\\PaymentApp.API.csproj|solutionrelative:paymentapp.api\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -156,7 +152,59 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
+              "Title": "ReportsController.cs",
+              "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\ReportsController.cs",
+              "RelativeDocumentMoniker": "PaymentApp.API\\Controllers\\ReportsController.cs",
+              "ToolTip": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\ReportsController.cs",
+              "RelativeToolTip": "PaymentApp.API\\Controllers\\ReportsController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAxwB4AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T17:06:58.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RefundController.cs",
+              "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\RefundController.cs",
+              "RelativeDocumentMoniker": "PaymentApp.API\\Controllers\\RefundController.cs",
+              "ToolTip": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\RefundController.cs",
+              "RelativeToolTip": "PaymentApp.API\\Controllers\\RefundController.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAABUAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T06:41:44.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RefundService.cs",
+              "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\RefundService.cs",
+              "RelativeDocumentMoniker": "PaymentApp.API\\Services\\RefundService.cs",
+              "ToolTip": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\RefundService.cs",
+              "RelativeToolTip": "PaymentApp.API\\Services\\RefundService.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAD4vzsAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T02:38:44.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TransactionRepository.cs",
+              "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Repositories\\TransactionRepository.cs",
+              "RelativeDocumentMoniker": "PaymentApp.API\\Repositories\\TransactionRepository.cs",
+              "ToolTip": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Repositories\\TransactionRepository.cs*",
+              "RelativeToolTip": "PaymentApp.API\\Repositories\\TransactionRepository.cs*",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAGcAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T17:05:00.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "PaymentController.cs",
               "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\PaymentController.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\Controllers\\PaymentController.cs",
@@ -164,73 +212,38 @@
               "RelativeToolTip": "PaymentApp.API\\Controllers\\PaymentController.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAuwBQAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T17:06:46.736Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ReportsController.cs",
-              "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\ReportsController.cs",
-              "RelativeDocumentMoniker": "PaymentApp.API\\Controllers\\ReportsController.cs",
-              "ToolTip": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\ReportsController.cs",
-              "RelativeToolTip": "PaymentApp.API\\Controllers\\ReportsController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwB4AAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T17:06:58.136Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RefundController.cs",
-              "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\RefundController.cs",
-              "RelativeDocumentMoniker": "PaymentApp.API\\Controllers\\RefundController.cs",
-              "ToolTip": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\RefundController.cs",
-              "RelativeToolTip": "PaymentApp.API\\Controllers\\RefundController.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAABUAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T06:41:44.993Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RefundService.cs",
-              "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\RefundService.cs",
-              "RelativeDocumentMoniker": "PaymentApp.API\\Services\\RefundService.cs",
-              "ToolTip": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\RefundService.cs",
-              "RelativeToolTip": "PaymentApp.API\\Services\\RefundService.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAgwC0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T02:38:44.929Z",
+              "WhenOpened": "2025-06-18T17:06:46.736Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CardRepository.cs",
-              "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Repositories\\CardRepository.cs",
-              "RelativeDocumentMoniker": "PaymentApp.API\\Repositories\\CardRepository.cs",
-              "ToolTip": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Repositories\\CardRepository.cs",
-              "RelativeToolTip": "PaymentApp.API\\Repositories\\CardRepository.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAowCEAAAA1AAAAAAAAAA==",
+              "Title": "TransactionService.cs",
+              "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\TransactionService.cs",
+              "RelativeDocumentMoniker": "PaymentApp.API\\Services\\TransactionService.cs",
+              "ToolTip": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\TransactionService.cs",
+              "RelativeToolTip": "PaymentApp.API\\Services\\TransactionService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAABUAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T23:46:07.438Z",
+              "WhenOpened": "2025-06-19T15:42:36.274Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TransactionRepository.cs",
-              "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Repositories\\TransactionRepository.cs",
-              "RelativeDocumentMoniker": "PaymentApp.API\\Repositories\\TransactionRepository.cs",
-              "ToolTip": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Repositories\\TransactionRepository.cs",
-              "RelativeToolTip": "PaymentApp.API\\Repositories\\TransactionRepository.cs",
-              "ViewState": "AgIAAHAAAAAAAAAAAAD4v18AAAA9AAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "ICardRepository.cs",
+              "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Repositories\\ICardRepository.cs",
+              "RelativeDocumentMoniker": "PaymentApp.API\\Repositories\\ICardRepository.cs",
+              "ToolTip": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Repositories\\ICardRepository.cs",
+              "RelativeToolTip": "PaymentApp.API\\Repositories\\ICardRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T17:05:00.917Z"
+              "WhenOpened": "2025-06-18T23:47:02.05Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "CardController.cs",
               "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Controllers\\CardController.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\Controllers\\CardController.cs",
@@ -239,18 +252,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-18T06:40:52.358Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TransactionService.cs",
-              "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\TransactionService.cs",
-              "RelativeDocumentMoniker": "PaymentApp.API\\Services\\TransactionService.cs",
-              "ToolTip": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\TransactionService.cs",
-              "RelativeToolTip": "PaymentApp.API\\Services\\TransactionService.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAawBUAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T15:42:36.274Z"
             },
             {
               "$type": "Document",
@@ -470,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 33,
               "Title": "20250619003836_CVVfieldinCardTable.cs",
               "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Migrations\\20250619003836_CVVfieldinCardTable.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\Migrations\\20250619003836_CVVfieldinCardTable.cs",
@@ -494,7 +495,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 34,
               "Title": "20250618231730_SeedDummyCardRecords.cs",
               "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Migrations\\20250618231730_SeedDummyCardRecords.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\Migrations\\20250618231730_SeedDummyCardRecords.cs",
@@ -507,18 +508,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 27,
-              "Title": "ICardRepository.cs",
-              "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Repositories\\ICardRepository.cs",
-              "RelativeDocumentMoniker": "PaymentApp.API\\Repositories\\ICardRepository.cs",
-              "ToolTip": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Repositories\\ICardRepository.cs",
-              "RelativeToolTip": "PaymentApp.API\\Repositories\\ICardRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T23:47:02.05Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
               "Title": "AppDbContextModelSnapshot.cs",
               "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Migrations\\AppDbContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\Migrations\\AppDbContextModelSnapshot.cs",
@@ -530,7 +519,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 29,
               "Title": "20250618152258_InitialDBSetup.cs",
               "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Migrations\\20250618152258_InitialDBSetup.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\Migrations\\20250618152258_InitialDBSetup.cs",
@@ -542,7 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 28,
               "Title": "20250618152258_InitialDBSetup.Designer.cs",
               "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Migrations\\20250618152258_InitialDBSetup.Designer.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\Migrations\\20250618152258_InitialDBSetup.Designer.cs",
@@ -554,7 +543,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 30,
               "Title": "PaymentApp.API.http",
               "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\PaymentApp.API.http",
               "RelativeDocumentMoniker": "PaymentApp.API\\PaymentApp.API.http",
@@ -566,7 +555,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 31,
               "Title": "launchSettings.json",
               "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "PaymentApp.API\\Properties\\launchSettings.json",
@@ -578,7 +567,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 32,
               "Title": "IPaymentService.cs",
               "DocumentMoniker": "F:\\todayyy test\\payment-app-test\\backend\\PaymentApp.API\\PaymentApp.API\\Services\\IPaymentService.cs",
               "RelativeDocumentMoniker": "PaymentApp.API\\Services\\IPaymentService.cs",

@@ -27,7 +27,6 @@ function Dashboard() {
 
     return (
         <div className="d-flex flex-column min-vh-100">
-            {/* Top Navbar */}
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-4 shadow-sm">
                 <span className="navbar-brand d-flex align-items-center gap-2">
                     <i className="bi bi-credit-card-2-front-fill"></i>
@@ -35,9 +34,7 @@ function Dashboard() {
                 </span>
             </nav>
 
-            {/* Tabs + Action Buttons */}
             <div className="d-flex justify-content-between align-items-center bg-white px-4 py-3 border-bottom shadow-sm">
-                {/* Report Tabs */}
                 <ul className="nav nav-tabs border-0">
                     <li className="nav-item">
                         <button
@@ -57,7 +54,6 @@ function Dashboard() {
                     </li>
                 </ul>
 
-                {/* Action Buttons */}
                 <div className="d-flex gap-2">
                     <button className="btn btn-success" onClick={() => setShowPaymentModal(true)}>
                         <i className="bi bi-cash-coin me-1"></i> Make Payment
@@ -68,14 +64,12 @@ function Dashboard() {
                 </div>
             </div>
 
-            {/* Main Content */}
             <div className="flex-grow-1 px-4 py-4">
                 <div className="bg-white p-4 shadow-sm rounded">
                     {renderTab()}
                 </div>
             </div>
 
-            {/* Payment Modal */}
             {showPaymentModal && (
                 <>
                     <div className="modal fade show d-block" tabIndex="-1">
@@ -95,7 +89,6 @@ function Dashboard() {
                 </>
             )}
 
-            {/* Refund Modal */}
             {showRefundModal && (
                 <>
                     <div className="modal fade show d-block" tabIndex="-1">

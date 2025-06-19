@@ -32,7 +32,6 @@ namespace PaymentApp.API.Services
                 return new CardValidationResponseDto { IsValid = false, Message = "Card expired" };
             }
 
-
             return new CardValidationResponseDto { IsValid = true, Message = "Card is valid" };
         }
     }

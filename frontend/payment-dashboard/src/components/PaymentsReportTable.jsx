@@ -12,8 +12,7 @@ function PaymentsReportTable() {
         pageNumber: 1,
         pageSize: 5
     });
-    const [summary, setSummary] = useState(null);
-    const [trendData, setTrendData] = useState([]);
+
     const [inputValues, setInputValues] = useState({
         cardNumber: '',
         status: '',
@@ -23,6 +22,11 @@ function PaymentsReportTable() {
 
     const [payments, setPayments] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
+    const [summary, setSummary] = useState(null);
+    const [trendData, setTrendData] = useState([]);
+    const [pieData, setPieData] = useState([]);
+
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
 
     const buildParams = (customFilters = filters) => {
         const params = {
@@ -61,26 +65,24 @@ function PaymentsReportTable() {
         fetchPayments(newFilters);
     };
 
-    useEffect(() => {
-        apiClient.get('/reports/GetPaymentSummary')
-            .then(res => setSummary(res.data))
-            .catch(err => console.error('Error fetching summary:', err));
-    }, []);
-
-    useEffect(() => {
-        apiClient.get('/reports/GetPaymentsTrend')
-            .then(res => setTrendData(res.data))
-            .catch(err => console.error('Error fetching trend data:', err));
-    }, []);
-
-    const [pieData, setPieData] = useState([]);
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
-
-    useEffect(() => {
-        apiClient.get('/reports/GetPaymentStatusPie')
-            .then(res => setPieData(res.data))
-            .catch(err => console.error('Error fetching pie data:', err));
-    }, []);
+    const handleResetClick = () => {
+        const defaultFilters = {
+            cardNumber: '',
+            status: '',
+            startDate: '',
+            endDate: '',
+            pageNumber: 1,
+            pageSize: 5
+        };
+        setInputValues({
+            cardNumber: '',
+            status: '',
+            startDate: '',
+            endDate: ''
+        });
+        setFilters(defaultFilters);
+        fetchPayments(defaultFilters);
+    };
 
     const goToPage = async (newPageNumber) => {
         const newFilters = { ...filters, pageNumber: newPageNumber };
@@ -88,39 +90,28 @@ function PaymentsReportTable() {
         await fetchPayments(newFilters);
     };
 
+    useEffect(() => {
+        apiClient.get('/reports/GetPaymentSummary')
+            .then(res => setSummary(res.data))
+            .catch(err => console.error('Error fetching summary:', err));
+
+        apiClient.get('/reports/GetPaymentsTrend')
+            .then(res => setTrendData(res.data))
+            .catch(err => console.error('Error fetching trend data:', err));
+
+        apiClient.get('/reports/GetPaymentStatusPie')
+            .then(res => setPieData(res.data))
+            .catch(err => console.error('Error fetching pie data:', err));
+
+        fetchPayments(filters);
+    }, []);
+
     return (
         <div className="mb-5">
-            <div className="row g-2 mb-3">
-                {summary && (
-                    <div className="row mb-4">
-                        <div className="col">
-                            <div className="card text-bg-light p-3">
-                                <strong>Total Payments:</strong> {summary.totalPayments}
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card text-bg-light p-3">
-                                <strong>Confirmed:</strong> {summary.confirmedCount}
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card text-bg-light p-3">
-                                <strong>Refunded:</strong> {summary.refundedCount}
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card text-bg-light p-3">
-                                <strong>Total Amount:</strong> AED {summary.totalAmount}
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </div>
             <h2 className="mb-3">Payments Report</h2>
-            <br></br>
             <div className="row g-2 mb-3">
                 <div className="col-md-3">
-                    <label htmlFor="cardNumber" className="form-label label-tight text-start">Card Number</label>
+                    <label htmlFor="cardNumber" className="form-label">Card Number</label>
                     <input
                         id="cardNumber"
                         className="form-control"
@@ -130,9 +121,8 @@ function PaymentsReportTable() {
                         onChange={handleChange}
                     />
                 </div>
-
                 <div className="col-md-2">
-                    <label htmlFor="status" className="form-label label-tight text-start">Status</label>
+                    <label htmlFor="status" className="form-label">Status</label>
                     <select
                         id="status"
                         className="form-select"
@@ -146,9 +136,8 @@ function PaymentsReportTable() {
                         <option value="held">Held</option>
                     </select>
                 </div>
-
                 <div className="col-md-2">
-                    <label htmlFor="startDate" className="form-label label-tight text-start">Start Date</label>
+                    <label htmlFor="startDate" className="form-label">Start Date</label>
                     <input
                         type="date"
                         id="startDate"
@@ -158,9 +147,8 @@ function PaymentsReportTable() {
                         onChange={handleChange}
                     />
                 </div>
-
                 <div className="col-md-2">
-                    <label htmlFor="endDate" className="form-label label-tight text-start">End Date</label>
+                    <label htmlFor="endDate" className="form-label">End Date</label>
                     <input
                         type="date"
                         id="endDate"
@@ -170,9 +158,11 @@ function PaymentsReportTable() {
                         onChange={handleChange}
                     />
                 </div>
-
-                <div className="col-md-2 d-flex align-items-end">
-                    <button className="btn btn-primary w-100" onClick={handleFilterClick}>
+                <div className="col-md-3 d-flex align-items-end gap-2">
+                    <button className="btn btn-secondary w-40" onClick={handleResetClick}>
+                        Reset
+                    </button>
+                    <button className="btn btn-primary w-50" onClick={handleFilterClick}>
                         Filter
                     </button>
                 </div>
@@ -213,20 +203,49 @@ function PaymentsReportTable() {
                 <button
                     className="btn btn-outline-secondary"
                     disabled={filters.pageNumber === 1}
-                    onClick={() => goToPage(Math.max(filters.pageNumber - 1, 1))}
+                    onClick={() => goToPage(filters.pageNumber - 1)}
                 >
                     Prev
                 </button>
-                <span>Page: {filters.pageNumber} of {Math.ceil(totalCount / filters.pageSize)}</span>
+                <span>Page: {filters.pageNumber} of {totalPages}</span>
                 <button
                     className="btn btn-outline-secondary"
-                    disabled={filters.pageNumber >= Math.ceil(totalCount / filters.pageSize)}
+                    disabled={filters.pageNumber >= totalPages}
                     onClick={() => goToPage(filters.pageNumber + 1)}
                 >
                     Next
                 </button>
             </div>
 
+            {summary && (
+                <>
+                    <h4 className="mt-5 mb-3">Summary</h4>
+                    <div className="row mb-4">
+                        <div className="col">
+                            <div className="card text-bg-light p-3">
+                                <strong>Total Payments:</strong> {summary.totalPayments}
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card text-bg-light p-3">
+                                <strong>Confirmed:</strong> {summary.confirmedCount}
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card text-bg-light p-3">
+                                <strong>Refunded:</strong> {summary.refundedCount}
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card text-bg-light p-3">
+                                <strong>Total Amount:</strong> AED {summary.totalAmount}
+                            </div>
+                        </div>
+                    </div>
+                </>
+            )}
+
+            <h4 className="mt-4 mb-2">Payment Trends (Line Chart)</h4>
             <div className="row g-2 mb-3">
                 <ResponsiveContainer width="100%" height={300}>
                     <LineChart data={trendData}>
@@ -239,6 +258,7 @@ function PaymentsReportTable() {
                 </ResponsiveContainer>
             </div>
 
+            <h4 className="mt-4 mb-2">Payment Status Distribution (Pie Chart)</h4>
             <div className="row g-2 mb-3">
                 <PieChart width={300} height={300}>
                     <Pie

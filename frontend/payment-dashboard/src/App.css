@@ -56,7 +56,7 @@ html, body, #root {
 }
 .navbar-brand {
   flex-grow: 1;
-  text-align: left; /* default, but explicit */
+  text-align: left;
 }
 
 .form-label {

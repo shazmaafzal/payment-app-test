@@ -44,8 +44,19 @@ function CardBalanceTable() {
         setFilters({ ...filters, [e.target.name]: e.target.value });
     };
 
-    const applyFilter = () => {
+    const handleFilter = () => {
         setFilters(prev => ({ ...prev, pageNumber: 1 }));
+    };
+
+    const handleReset = () => {
+        const defaultFilters = {
+            cardNumber: '',
+            minBalance: '',
+            maxBalance: '',
+            pageNumber: 1,
+            pageSize: 5
+        };
+        setFilters(defaultFilters);
     };
 
     const totalPages = Math.ceil(totalCount / filters.pageSize);
@@ -93,8 +104,11 @@ function CardBalanceTable() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="col-md-2 d-flex align-items-end">
-                    <button className="btn btn-primary w-100" onClick={applyFilter}>
+                <div className="col-md-3 d-flex align-items-end gap-2">
+                    <button className="btn btn-secondary w-40" onClick={handleReset}>
+                        Reset
+                    </button>
+                    <button className="btn btn-primary w-50" onClick={handleFilter}>
                         Filter
                     </button>
                 </div>

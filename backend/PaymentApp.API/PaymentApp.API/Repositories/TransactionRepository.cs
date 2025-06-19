@@ -95,13 +95,13 @@ namespace PaymentApp.API.Repositories
 
         public async Task<PagedResult<CardBalanceReportDto>> GetCardBalancesAsync(CardBalanceReportFilterDto filter)
         {
-            var query = from card in _context.Cards
+            var query = from card in _context.Cards.AsNoTracking()
                         where card.IsActive
                         select new
                         {
                             card.CardNumber,
                             card.Balance,
-                            TotalSpent = _context.Transactions
+                            TotalSpent = _context.Transactions.AsNoTracking()
                                 .Where(t => t.CardNumber == card.CardNumber && t.IsConfirmed && !t.IsRefunded)
                                 .Sum(t => t.Amount) ?? 0
                         };
