@@ -77,7 +77,24 @@ function PaymentForm() {
                 setMessage(paymentResponse.data.message);
             }
             else {
-                setMessage(`Payment successful! Transaction ID: ${paymentResponse.data.transactionId}`);
+                setMessage(
+                    <div>
+                        <p>Payment successful!</p>
+                        <p>
+                            <strong>Transaction ID:</strong>{" "}
+                            <span style={{ color: "green", fontWeight: "bold" }}>
+                                {paymentResponse.data.transactionId}
+                            </span>
+                        </p>
+                        <p>
+                            <strong>Refund Code:</strong>{" "}
+                            <span style={{ color: "blue", fontWeight: "bold" }}>
+                                {paymentResponse.data.refundCode || "N/A"}
+                            </span>
+                        </p>
+                    </div>
+                );
+                // setMessage(`Payment successful! Transaction ID: ${paymentResponse.data.transactionId}`);
             }
         } catch (error) {
             console.error(error);

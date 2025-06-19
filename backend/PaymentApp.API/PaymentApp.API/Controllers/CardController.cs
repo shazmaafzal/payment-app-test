@@ -23,9 +23,6 @@ namespace PaymentApp.API.Controllers
 
             var result = await _cardService.ValidateCardAsync(request);
 
-            //if (!result.IsValid)
-            //    return BadRequest(result.Message);
-
             return Ok(result);
         }
     }

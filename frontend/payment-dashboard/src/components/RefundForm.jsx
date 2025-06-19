@@ -43,7 +43,7 @@ function RefundForm() {
         refundCode: form.refundCode
       });
 
-      if (response.data.success) {
+      if (response.data.isValid) {
         setMessage('Refund processed successfully.');
       } else {
         setMessage('Refund failed: ' + response.data.message);

@@ -28,6 +28,7 @@ builder.Services.AddControllers();
 //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
 builder.Services.AddScoped<ICardService, CardService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IRefundService, RefundService>();
 builder.Services.AddHostedService<PaymentConfirmationWorker>();
 
 builder.Services.AddScoped<ICardRepository, CardRepository>();

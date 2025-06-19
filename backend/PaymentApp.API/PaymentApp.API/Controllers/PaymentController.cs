@@ -20,9 +20,6 @@ namespace PaymentApp.API.Controllers
         {
             var result = await _paymentService.ProcessPaymentAsync(request);
 
-            //if (string.IsNullOrEmpty(result.TransactionId))
-            //    return BadRequest(result.Message);
-
             return Ok(result);
         }
     }
