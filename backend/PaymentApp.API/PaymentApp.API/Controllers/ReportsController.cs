@@ -2,6 +2,7 @@
 using PaymentApp.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
 
 namespace PaymentApp.API.Controllers
 {
@@ -30,5 +31,27 @@ namespace PaymentApp.API.Controllers
             var result = await _transactionService.GetCardBalancesAsync(filter);
             return Ok(result);
         }
+
+        [HttpGet("GetPaymentSummary")]
+        public async Task<IActionResult> GetPaymentSummary()
+        {
+            var summary = await _transactionService.GetPaymentSummaryAsync();
+            return Ok(summary);
+        }
+
+        [HttpGet("GetPaymentsTrend")]
+        public async Task<IActionResult> GetPaymentsTrend([FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate)
+        {
+            var trend = await _transactionService.GetPaymentsTrendAsync(startDate, endDate);
+            return Ok(trend);
+        }
+
+        [HttpGet("GetPaymentStatusPie")]
+        public async Task<IActionResult> GetPaymentStatusPie()
+        {
+            var data = await _transactionService.GetPaymentStatusPieAsync();
+            return Ok(data);
+        }
+
     }
 }

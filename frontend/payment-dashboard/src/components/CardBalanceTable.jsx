@@ -53,11 +53,13 @@ function CardBalanceTable() {
 
     return (
         <div className="mb-5">
-            <h5 className="mb-3">Card Balance Report</h5>
-
+            <h2 className="mb-3">Card Balance Report</h2>
+            <br></br>
             <div className="row g-2 mb-3">
                 <div className="col-md-3">
+                    <label htmlFor="cardNumber" className="form-label label-tight text-start">Card Number</label>
                     <input
+                        id="cardNumber"
                         className="form-control"
                         name="cardNumber"
                         placeholder="Card Number"
@@ -66,7 +68,9 @@ function CardBalanceTable() {
                     />
                 </div>
                 <div className="col-md-2">
+                    <label htmlFor="minBalance" className="form-label label-tight text-start">Min Balance</label>
                     <input
+                        id="minBalance"
                         className="form-control"
                         name="minBalance"
                         type="number"
@@ -76,7 +80,9 @@ function CardBalanceTable() {
                     />
                 </div>
                 <div className="col-md-2">
+                    <label htmlFor="maxBalance" className="form-label label-tight text-start">Max Balance</label>
                     <input
+                        id="maxBalance"
                         className="form-control"
                         name="maxBalance"
                         type="number"
@@ -85,7 +91,8 @@ function CardBalanceTable() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="col-md-2">
+
+                <div className="col-md-2 d-flex align-items-end">
                     <button className="btn btn-primary w-100" onClick={applyFilter}>
                         Filter
                     </button>

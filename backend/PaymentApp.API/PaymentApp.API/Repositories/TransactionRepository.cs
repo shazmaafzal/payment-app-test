@@ -113,6 +113,67 @@ namespace PaymentApp.API.Repositories
     .ToListAsync();
         }
 
+        public async Task<PaymentSummaryDto> GetPaymentSummaryAsync()
+        {
+            var transactions = _context.Transactions.AsNoTracking();
+
+            var summary = new PaymentSummaryDto
+            {
+                TotalPayments = await transactions.CountAsync(),
+                ConfirmedCount = await transactions.CountAsync(t => t.IsConfirmed && !t.IsRefunded),
+                RefundedCount = await transactions.CountAsync(t => t.IsRefunded),
+                HeldCount = await transactions.CountAsync(t => !t.IsConfirmed && !t.IsRefunded),
+                TotalAmount = await transactions.SumAsync(t => t.Amount ?? 0)
+            };
+
+            return summary;
+        }
+
+        public async Task<List<PaymentsTrendDto>> GetPaymentsTrendAsync(DateTime? startDate, DateTime? endDate)
+        {
+            var query = _context.Transactions.AsNoTracking();
+
+            if (startDate.HasValue)
+                query = query.Where(t => t.CreatedAt >= startDate.Value);
+
+            if (endDate.HasValue)
+                query = query.Where(t => t.CreatedAt <= endDate.Value);
+
+            return await query
+                .GroupBy(t => t.CreatedAt.Value.Date)
+                .Select(g => new PaymentsTrendDto
+                {
+                    Date = g.Key,
+                    TotalAmount = g.Sum(x => x.Amount ?? 0)
+                })
+                .OrderBy(x => x.Date)
+                .ToListAsync();
+        }
+
+        public async Task<List<PaymentStatusPieDto>> GetPaymentStatusPieAsync()
+        {
+            var data = new List<PaymentStatusPieDto>
+            {
+                new PaymentStatusPieDto
+                {
+                    Status = "Confirmed",
+                    Count = await _context.Transactions.CountAsync(t => t.IsConfirmed && !t.IsRefunded)
+                },
+                new PaymentStatusPieDto
+                {
+                    Status = "Refunded",
+                    Count = await _context.Transactions.CountAsync(t => t.IsRefunded)
+                },
+                new PaymentStatusPieDto
+                {
+                    Status = "Held",
+                    Count = await _context.Transactions.CountAsync(t => !t.IsConfirmed && !t.IsRefunded)
+                }
+            };
+
+            return data;
+        }
+
         public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();

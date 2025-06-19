@@ -105,13 +105,10 @@ function PaymentForm() {
     };
 
     return (
-        <div className="card shadow-sm mb-4">
-            <div className="card-header bg-primary text-white">
-                <h5 className="mb-0">Make a Payment</h5>
-            </div>
-            <div className="card-body">
-                <form onSubmit={handleSubmit} className="row g-3">
-                    <div className="col-md-6">
+        <div className="card border-0">
+            <div className="card-body p-0">
+                <form onSubmit={handleSubmit} className="row g-4">
+                    <div className="col-12">
                         <label className="form-label">Card Number</label>
                         <input
                             type="text"
@@ -121,9 +118,11 @@ function PaymentForm() {
                             onChange={handleChange}
                             required
                             maxLength={16}
+                            placeholder="1234 5678 9012 3456"
                         />
                     </div>
-                    <div className="col-md-6">
+
+                    <div className="col-12">
                         <label className="form-label">Card Holder Name</label>
                         <input
                             type="text"
@@ -132,9 +131,11 @@ function PaymentForm() {
                             value={form.cardHolderName}
                             onChange={handleChange}
                             required
+                            placeholder="John Doe"
                         />
                     </div>
-                    <div className="col-md-3">
+
+                    <div className="col-md-6">
                         <label className="form-label">Expiry (MM/YY)</label>
                         <input
                             type="text"
@@ -144,11 +145,11 @@ function PaymentForm() {
                             onChange={handleChange}
                             required
                             placeholder="12/25"
-                            // pattern="^(0[1-9]|1[0-2])\/\d{2}$"
                             maxLength={5}
                         />
                     </div>
-                    <div className="col-md-3">
+
+                    <div className="col-md-6">
                         <label className="form-label">CVV</label>
                         <input
                             type="password"
@@ -157,10 +158,12 @@ function PaymentForm() {
                             value={form.cvv}
                             onChange={handleChange}
                             required
+                            placeholder="123"
                             maxLength={3}
                         />
                     </div>
-                    <div className="col-md-4">
+
+                    <div className="col-12">
                         <label className="form-label">Amount (AED)</label>
                         <input
                             type="number"
@@ -169,9 +172,11 @@ function PaymentForm() {
                             value={form.amount}
                             onChange={handleChange}
                             required
+                            placeholder="100.00"
                         />
                     </div>
-                    <div className="col-12">
+
+                    <div className="col-12 text-end">
                         <button
                             type="submit"
                             className="btn btn-success"
@@ -180,16 +185,19 @@ function PaymentForm() {
                             {isSubmitting ? 'Processing...' : 'Submit Payment'}
                         </button>
                     </div>
-                </form>
 
-                {message && (
-                    <div className="alert alert-info mt-3" role="alert">
-                        {message}
-                    </div>
-                )}
+                    {message && (
+                        <div className="col-12">
+                            <div className="alert alert-info mb-0" role="alert">
+                                {message}
+                            </div>
+                        </div>
+                    )}
+                </form>
             </div>
         </div>
     );
+
 }
 
 export default PaymentForm;

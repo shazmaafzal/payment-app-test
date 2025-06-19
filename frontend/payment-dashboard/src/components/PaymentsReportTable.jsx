@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import apiClient from '../api/apiClient';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, Legend } from 'recharts';
 
 function PaymentsReportTable() {
-    // This holds the filters sent to the backend
     const [filters, setFilters] = useState({
         cardNumber: '',
         status: '',
@@ -11,8 +12,9 @@ function PaymentsReportTable() {
         pageNumber: 1,
         pageSize: 5
     });
+    const [summary, setSummary] = useState(null);
+    const [trendData, setTrendData] = useState([]);
 
-    // This holds temporary input values until user clicks filter
     const [inputValues, setInputValues] = useState({
         cardNumber: '',
         status: '',
@@ -47,28 +49,74 @@ function PaymentsReportTable() {
         }
     };
 
-    // Fetch payments whenever filters change (page number or filters applied)
     useEffect(() => {
         fetchPayments();
     }, [filters]);
 
-    // Update temporary inputs as user types/selects
     const handleChange = (e) => {
         setInputValues({ ...inputValues, [e.target.name]: e.target.value });
     };
 
-    // When filter button clicked, update filters state and reset pageNumber to 1
     const handleFilterClick = () => {
         setFilters({ ...inputValues, pageNumber: 1, pageSize: 5 });
     };
 
+    useEffect(() => {
+        apiClient.get('/reports/GetPaymentSummary')
+            .then(res => setSummary(res.data))
+            .catch(err => console.error('Error fetching summary:', err));
+    }, []);
+
+    useEffect(() => {
+        apiClient.get('/reports/GetPaymentsTrend')
+            .then(res => setTrendData(res.data))
+            .catch(err => console.error('Error fetching trend data:', err));
+    }, []);
+
+    const [pieData, setPieData] = useState([]);
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
+
+    useEffect(() => {
+        apiClient.get('/reports/GetPaymentStatusPie')
+            .then(res => setPieData(res.data))
+            .catch(err => console.error('Error fetching pie data:', err));
+    }, []);
+
     return (
         <div className="mb-5">
-            <h5 className="mb-3">Payments Report</h5>
-
+            <div className="row g-2 mb-3">
+                {summary && (
+                    <div className="row mb-4">
+                        <div className="col">
+                            <div className="card text-bg-light p-3">
+                                <strong>Total Payments:</strong> {summary.totalPayments}
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card text-bg-light p-3">
+                                <strong>Confirmed:</strong> {summary.confirmedCount}
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card text-bg-light p-3">
+                                <strong>Refunded:</strong> {summary.refundedCount}
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card text-bg-light p-3">
+                                <strong>Total Amount:</strong> AED {summary.totalAmount}
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+            <h2 className="mb-3">Payments Report</h2>
+            <br></br>
             <div className="row g-2 mb-3">
                 <div className="col-md-3">
+                    <label htmlFor="cardNumber" className="form-label label-tight text-start">Card Number</label>
                     <input
+                        id="cardNumber"
                         className="form-control"
                         name="cardNumber"
                         placeholder="Card Number"
@@ -76,8 +124,11 @@ function PaymentsReportTable() {
                         onChange={handleChange}
                     />
                 </div>
+
                 <div className="col-md-2">
+                    <label htmlFor="status" className="form-label label-tight text-start">Status</label>
                     <select
+                        id="status"
                         className="form-select"
                         name="status"
                         value={inputValues.status}
@@ -89,25 +140,32 @@ function PaymentsReportTable() {
                         <option value="held">Held</option>
                     </select>
                 </div>
+
                 <div className="col-md-2">
+                    <label htmlFor="startDate" className="form-label label-tight text-start">Start Date</label>
                     <input
                         type="date"
+                        id="startDate"
                         className="form-control"
                         name="startDate"
                         value={inputValues.startDate}
                         onChange={handleChange}
                     />
                 </div>
+
                 <div className="col-md-2">
+                    <label htmlFor="endDate" className="form-label label-tight text-start">End Date</label>
                     <input
                         type="date"
+                        id="endDate"
                         className="form-control"
                         name="endDate"
                         value={inputValues.endDate}
                         onChange={handleChange}
                     />
                 </div>
-                <div className="col-md-2">
+
+                <div className="col-md-2 d-flex align-items-end">
                     <button className="btn btn-primary w-100" onClick={handleFilterClick}>
                         Filter
                     </button>
@@ -169,6 +227,38 @@ function PaymentsReportTable() {
                 >
                     Next
                 </button>
+            </div>
+
+            <div className="row g-2 mb-3">
+                <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={trendData}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="date" />
+                        <YAxis />
+                        <Tooltip />
+                        <Line type="monotone" dataKey="totalAmount" stroke="#8884d8" />
+                    </LineChart>
+                </ResponsiveContainer>
+            </div>
+
+            <div className="row g-2 mb-3">
+                <PieChart width={300} height={300}>
+                    <Pie
+                        data={pieData}
+                        dataKey="count"
+                        nameKey="status"
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={100}
+                        fill="#8884d8"
+                        label
+                    >
+                        {pieData.map((_, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                    </Pie>
+                    <Legend />
+                </PieChart>
             </div>
         </div>
     );

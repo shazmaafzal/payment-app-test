@@ -21,5 +21,20 @@ namespace PaymentApp.API.Services
         {
             return await _transactionRepository.GetCardBalancesAsync(filter);
         }
+
+        public async Task<PaymentSummaryDto> GetPaymentSummaryAsync()
+        {
+            return await _transactionRepository.GetPaymentSummaryAsync();
+        }
+
+        public async Task<List<PaymentsTrendDto>> GetPaymentsTrendAsync(DateTime? startDate, DateTime? endDate)
+        {
+            return await _transactionRepository.GetPaymentsTrendAsync(startDate, endDate);
+        }
+
+        public async Task<List<PaymentStatusPieDto>> GetPaymentStatusPieAsync()
+        {
+            return await _transactionRepository.GetPaymentStatusPieAsync();
+        }
     }
 }

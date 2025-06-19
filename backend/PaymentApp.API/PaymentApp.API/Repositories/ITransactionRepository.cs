@@ -13,5 +13,8 @@ namespace PaymentApp.API.Repositories
         Task<List<PaymentReportResultDto>> GetFilteredAsync(PaymentReportFilterDto filter);
         Task<List<CardBalanceReportDto>> GetCardBalancesAsync(CardBalanceReportFilterDto filter);
         Task SaveChangesAsync();
+        Task<PaymentSummaryDto> GetPaymentSummaryAsync();
+        Task<List<PaymentsTrendDto>> GetPaymentsTrendAsync(DateTime? startDate, DateTime? endDate);
+        Task<List<PaymentStatusPieDto>> GetPaymentStatusPieAsync();
     }
 }

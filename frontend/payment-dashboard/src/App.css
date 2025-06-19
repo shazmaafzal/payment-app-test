@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -40,3 +40,42 @@
 .read-the-docs {
   color: #888;
 }
+
+
+
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-brand {
+  flex-grow: 1;
+}
+.navbar-brand {
+  flex-grow: 1;
+  text-align: left; /* default, but explicit */
+}
+
+.form-label {
+  text-align: left;
+  display: block;
+}
+
+.label-tight {
+  margin-bottom: 0.1rem;
+}
+
+/* .app-layout {
+  height: 100%;
+}
+
+button.btn {
+  min-width: 160px;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+} */

@@ -43,7 +43,7 @@ namespace PaymentApp.API.Services
             }
 
             transaction.IsRefunded = true;
-            transaction.IsConfirmed = false; // if you want to mark refunded as not confirmed
+            transaction.IsConfirmed = false;
 
             await _transactionRepository.UpdateAsync(transaction);
             await _transactionRepository.AddRefundTransactionAsync(transaction.TransactionId, transaction.RefundCode);
