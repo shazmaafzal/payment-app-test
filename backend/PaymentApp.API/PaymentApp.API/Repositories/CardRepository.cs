@@ -7,7 +7,6 @@ namespace PaymentApp.API.Repositories
 {
     public class CardRepository : ICardRepository
     {
-
         private readonly AppDbContext _context;
 
         public CardRepository(AppDbContext context)
@@ -21,6 +20,7 @@ namespace PaymentApp.API.Repositories
                 return null;
 
             return await _context.Cards
+                .AsNoTracking()
                 .FirstOrDefaultAsync(c =>
                     c.CardNumber == cardNumber &&
                     //c.CardHolderName.ToLower() == request.CardHolderName.ToLower() &&
@@ -33,7 +33,7 @@ namespace PaymentApp.API.Repositories
 
         public async Task<Card?> GetByCardNumberAsync(string cardNumber)
         {
-            return await _context.Cards.FirstOrDefaultAsync(c => c.CardNumber == cardNumber);
+            return await _context.Cards.AsNoTracking().FirstOrDefaultAsync(c => c.CardNumber == cardNumber);
         }
 
         public async Task UpdateAsync(Card card)

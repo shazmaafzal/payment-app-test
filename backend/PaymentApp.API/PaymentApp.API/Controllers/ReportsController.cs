@@ -2,7 +2,6 @@
 using PaymentApp.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using PaymentApp.API.Repositories;
 
 namespace PaymentApp.API.Controllers
 {
@@ -10,17 +9,17 @@ namespace PaymentApp.API.Controllers
     [Route("api/reports")]
     public class ReportsController : ControllerBase
     {
-        private readonly ITransactionRepository _transactionRepository;
+        private readonly ITransactionService _transactionService;
 
-        public ReportsController(ITransactionRepository transactionRepository)
+        public ReportsController(ITransactionService transactionService)
         {
-            _transactionRepository = transactionRepository;
+            _transactionService = transactionService;
         }
 
         [HttpGet("GetPayments")]
         public async Task<IActionResult> GetPayments([FromQuery] PaymentReportFilterDto filter)
         {
-            var result = await _transactionRepository.GetFilteredAsync(filter);
+            var result = await _transactionService.GetFilteredAsync(filter);
             return Ok(result);
         }
 
@@ -28,7 +27,7 @@ namespace PaymentApp.API.Controllers
         [HttpGet("GetCardBalances")]
         public async Task<IActionResult> GetCardBalances([FromQuery] CardBalanceReportFilterDto filter)
         {
-            var result = await _transactionRepository.GetCardBalancesAsync(filter);
+            var result = await _transactionService.GetCardBalancesAsync(filter);
             return Ok(result);
         }
     }

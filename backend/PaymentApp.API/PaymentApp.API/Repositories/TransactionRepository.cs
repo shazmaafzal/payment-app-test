@@ -38,17 +38,17 @@ namespace PaymentApp.API.Repositories
 
         public async Task<Transactions?> GetByTransactionIdAsync(string transactionId)
         {
-            return await _context.Transactions.FirstOrDefaultAsync(t => t.TransactionId == transactionId);
+            return await _context.Transactions.AsNoTracking().FirstOrDefaultAsync(t => t.TransactionId == transactionId);
         }
 
         public async Task<List<Transactions>> GetUnconfirmedTransactionsAsync()
         {
-            return await _context.Transactions.Where(t => !t.IsConfirmed).ToListAsync();
+            return await _context.Transactions.AsNoTracking().Where(t => !t.IsConfirmed).ToListAsync();
         }
 
         public async Task<List<PaymentReportResultDto>> GetFilteredAsync(PaymentReportFilterDto filter)
         {
-            var query = _context.Transactions.AsQueryable();
+            var query = _context.Transactions.AsNoTracking().AsQueryable();
 
             if (!string.IsNullOrEmpty(filter.CardNumber))
                 query = query.Where(t => t.CardNumber == filter.CardNumber);
@@ -86,7 +86,7 @@ namespace PaymentApp.API.Repositories
 
         public async Task<List<CardBalanceReportDto>> GetCardBalancesAsync(CardBalanceReportFilterDto filter)
         {
-            var query = _context.Transactions
+            var query = _context.Transactions.AsNoTracking()
                 .Where(t => t.IsConfirmed && !t.IsRefunded);
 
             if (!string.IsNullOrEmpty(filter.CardNumber))
