@@ -5,7 +5,7 @@ using PaymentApp.API.Services;
 namespace PaymentApp.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/payment")]
     public class PaymentController : ControllerBase
     {
         private readonly IPaymentService _paymentService;
@@ -15,13 +15,13 @@ namespace PaymentApp.API.Controllers
             _paymentService = paymentService;
         }
 
-        [HttpPost("process")]
+        [HttpPost("Process")]
         public async Task<IActionResult> Process([FromBody] PaymentRequestDto request)
         {
             var result = await _paymentService.ProcessPaymentAsync(request);
 
-            if (string.IsNullOrEmpty(result.TransactionId))
-                return BadRequest(result.Message);
+            //if (string.IsNullOrEmpty(result.TransactionId))
+            //    return BadRequest(result.Message);
 
             return Ok(result);
         }

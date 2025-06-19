@@ -5,7 +5,7 @@ using PaymentApp.API.Services;
 namespace PaymentApp.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/card")]
     public class CardController : ControllerBase
     {
         private readonly ICardService _cardService;
@@ -15,7 +15,7 @@ namespace PaymentApp.API.Controllers
             _cardService = cardService;
         }
 
-        [HttpPost("validate")]
+        [HttpPost("ValidateCard")]
         public async Task<IActionResult> ValidateCard([FromBody] CardValidationRequestDto request)
         {
             if (!ModelState.IsValid)
@@ -23,8 +23,8 @@ namespace PaymentApp.API.Controllers
 
             var result = await _cardService.ValidateCardAsync(request);
 
-            if (!result.IsValid)
-                return BadRequest(result.Message);
+            //if (!result.IsValid)
+            //    return BadRequest(result.Message);
 
             return Ok(result);
         }

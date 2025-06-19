@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PaymentApp.API.Data;
 
@@ -11,9 +12,11 @@ using PaymentApp.API.Data;
 namespace PaymentApp.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250619002036_CardIdasInt")]
+    partial class CardIdasInt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,9 +35,6 @@ namespace PaymentApp.API.Migrations
 
                     b.Property<decimal?>("Balance")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("CVV")
-                        .HasColumnType("int");
 
                     b.Property<string>("CardHolderName")
                         .HasColumnType("nvarchar(max)");
@@ -57,7 +57,6 @@ namespace PaymentApp.API.Migrations
                         {
                             Id = 1,
                             Balance = 1000m,
-                            CVV = 123,
                             CardHolderName = "John Doe",
                             CardNumber = "1234567812345678",
                             ExpiryDate = new DateTime(2026, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -67,7 +66,6 @@ namespace PaymentApp.API.Migrations
                         {
                             Id = 2,
                             Balance = 1500m,
-                            CVV = 456,
                             CardHolderName = "Jane Smith",
                             CardNumber = "8765432187654321",
                             ExpiryDate = new DateTime(2025, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -77,7 +75,6 @@ namespace PaymentApp.API.Migrations
                         {
                             Id = 3,
                             Balance = 2000m,
-                            CVV = 789,
                             CardHolderName = "Alice Johnson",
                             CardNumber = "4444333322221111",
                             ExpiryDate = new DateTime(2027, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -87,7 +84,6 @@ namespace PaymentApp.API.Migrations
                         {
                             Id = 4,
                             Balance = 500m,
-                            CVV = 765,
                             CardHolderName = "Bob Williams",
                             CardNumber = "9999888877776666",
                             ExpiryDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -97,7 +93,6 @@ namespace PaymentApp.API.Migrations
                         {
                             Id = 5,
                             Balance = 750m,
-                            CVV = 543,
                             CardHolderName = "Charlie Brown",
                             CardNumber = "1111222233334444",
                             ExpiryDate = new DateTime(2025, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),

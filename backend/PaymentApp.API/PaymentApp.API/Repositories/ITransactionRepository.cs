@@ -6,6 +6,7 @@ namespace PaymentApp.API.Repositories
     public interface ITransactionRepository
     {
         Task AddAsync(Transactions tx);
+        Task UpdateAsync(Transactions tx);
         Task<Transactions?> GetByTransactionIdAsync(string transactionId);
         Task<List<Transactions>> GetUnconfirmedTransactionsAsync();
         Task<List<PaymentReportResultDto>> GetFilteredAsync(PaymentReportFilterDto filter);

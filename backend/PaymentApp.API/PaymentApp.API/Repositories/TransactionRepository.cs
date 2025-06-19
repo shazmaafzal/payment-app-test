@@ -19,6 +19,23 @@ namespace PaymentApp.API.Repositories
             await _context.Transactions.AddAsync(tx);
         }
 
+        public async Task AddRefundTransactionAsync(string transactionId, string refundCode)
+        {
+            var refundRequest = new RefundRequest
+            {
+                TransactionId = transactionId,
+                RefundCode = refundCode,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            await _context.RefundRequests.AddAsync(refundRequest);
+        }
+
+        public async Task UpdateAsync(Transactions tx)
+        {
+            _context.Transactions.Update(tx);
+        }
+
         public async Task<Transactions?> GetByTransactionIdAsync(string transactionId)
         {
             return await _context.Transactions.FirstOrDefaultAsync(t => t.TransactionId == transactionId);

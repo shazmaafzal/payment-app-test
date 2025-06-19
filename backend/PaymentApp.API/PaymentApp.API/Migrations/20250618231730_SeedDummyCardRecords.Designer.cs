@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PaymentApp.API.Data;
 
@@ -11,9 +12,11 @@ using PaymentApp.API.Data;
 namespace PaymentApp.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250618231730_SeedDummyCardRecords")]
+    partial class SeedDummyCardRecords
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,17 +27,11 @@ namespace PaymentApp.API.Migrations
 
             modelBuilder.Entity("PaymentApp.API.Models.Card", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<decimal>("Id")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("Balance")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("CVV")
-                        .HasColumnType("int");
 
                     b.Property<string>("CardHolderName")
                         .HasColumnType("nvarchar(max)");
@@ -55,9 +52,8 @@ namespace PaymentApp.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 1m,
                             Balance = 1000m,
-                            CVV = 123,
                             CardHolderName = "John Doe",
                             CardNumber = "1234567812345678",
                             ExpiryDate = new DateTime(2026, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -65,9 +61,8 @@ namespace PaymentApp.API.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 2m,
                             Balance = 1500m,
-                            CVV = 456,
                             CardHolderName = "Jane Smith",
                             CardNumber = "8765432187654321",
                             ExpiryDate = new DateTime(2025, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -75,9 +70,8 @@ namespace PaymentApp.API.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 3m,
                             Balance = 2000m,
-                            CVV = 789,
                             CardHolderName = "Alice Johnson",
                             CardNumber = "4444333322221111",
                             ExpiryDate = new DateTime(2027, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -85,9 +79,8 @@ namespace PaymentApp.API.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 4m,
                             Balance = 500m,
-                            CVV = 765,
                             CardHolderName = "Bob Williams",
                             CardNumber = "9999888877776666",
                             ExpiryDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -95,9 +88,8 @@ namespace PaymentApp.API.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 5m,
                             Balance = 750m,
-                            CVV = 543,
                             CardHolderName = "Charlie Brown",
                             CardNumber = "1111222233334444",
                             ExpiryDate = new DateTime(2025, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),

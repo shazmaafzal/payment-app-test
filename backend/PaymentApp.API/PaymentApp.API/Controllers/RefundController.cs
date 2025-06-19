@@ -6,7 +6,7 @@ using PaymentApp.API.Services;
 namespace PaymentApp.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/refund")]
     public class RefundController : ControllerBase
     {
         private readonly ITransactionRepository _transactionRepository;
@@ -18,8 +18,8 @@ namespace PaymentApp.API.Controllers
             _logger = logger;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Refund([FromBody] RefundRequest request)
+        [HttpPost("ProcessRefund")]
+        public async Task<IActionResult> ProcessRefund([FromBody] RefundRequest request)
         {
             var transaction = await _transactionRepository.GetByTransactionIdAsync(request.TransactionId);
             if (transaction == null)
@@ -33,10 +33,6 @@ namespace PaymentApp.API.Controllers
             }
 
             var now = DateTime.UtcNow;
-            //if (now.Date > transaction.CreatedAt.Date) // past midnight
-            //{
-            //    return BadRequest("Refund period expired.");
-            //}
 
             if (!transaction.CreatedAt.HasValue || now.Date > transaction.CreatedAt.Value.Date)
             {
@@ -50,6 +46,9 @@ namespace PaymentApp.API.Controllers
 
             transaction.IsRefunded = true;
             transaction.IsConfirmed = false; // if you want to mark refunded as not confirmed
+
+            await _transactionRepository.UpdateAsync(transaction);
+            await _transactionRepository.SaveChangesAsync();
 
             _logger.LogInformation($"Transaction {transaction.TransactionId} refunded at {now}");
 

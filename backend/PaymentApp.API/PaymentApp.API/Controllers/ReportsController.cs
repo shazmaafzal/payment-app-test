@@ -8,9 +8,6 @@ namespace PaymentApp.API.Controllers
 {
     [ApiController]
     [Route("api/reports")]
-
-    //[Route("api/[controller]/{action}")]
-    //[ApiController]
     public class ReportsController : ControllerBase
     {
         private readonly ITransactionRepository _transactionRepository;
@@ -21,16 +18,17 @@ namespace PaymentApp.API.Controllers
         }
 
         [HttpGet("GetPayments")]
-        public IActionResult GetPayments([FromQuery] PaymentReportFilterDto filter)
+        public async Task<IActionResult> GetPayments([FromQuery] PaymentReportFilterDto filter)
         {
-            var result = _transactionRepository.GetFilteredAsync(filter);
+            var result = await _transactionRepository.GetFilteredAsync(filter);
             return Ok(result);
         }
 
+
         [HttpGet("GetCardBalances")]
-        public IActionResult GetCardBalances([FromQuery] CardBalanceReportFilterDto filter)
+        public async Task<IActionResult> GetCardBalances([FromQuery] CardBalanceReportFilterDto filter)
         {
-            var result = _transactionRepository.GetCardBalancesAsync(filter);
+            var result = await _transactionRepository.GetCardBalancesAsync(filter);
             return Ok(result);
         }
     }

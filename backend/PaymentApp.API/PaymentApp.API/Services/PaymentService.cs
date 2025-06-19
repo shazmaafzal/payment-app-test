@@ -19,15 +19,15 @@ namespace PaymentApp.API.Services
         {
             var card = await _cardRepository.GetValidCardAsync(
                 request.CardNumber,
-                "", // card holder name is not passed in this method, you may want to change this
-                null // expiry date is not checked here
+                request.CVV,
+                request.ExpiryDate
             );
 
             if (card == null || !card.IsActive || card.ExpiryDate < DateTime.UtcNow)
-                return new PaymentResponseDto { Message = "Invalid or inactive card" };
+                return new PaymentResponseDto { IsValid = false, Message = "Invalid or inactive card" };
 
             if (card.Balance < request.Amount)
-                return new PaymentResponseDto { Message = "Insufficient balance" };
+                return new PaymentResponseDto { IsValid = false, Message = "Insufficient balance" };
 
             card.Balance -= request.Amount;
             await _cardRepository.UpdateAsync(card);
@@ -53,7 +53,8 @@ namespace PaymentApp.API.Services
             {
                 TransactionId = transaction.TransactionId,
                 RefundCode = transaction.RefundCode,
-                Message = "Payment processed and held successfully"
+                Message = "Payment processed and held successfully",
+                IsValid = true
             };
         }
 

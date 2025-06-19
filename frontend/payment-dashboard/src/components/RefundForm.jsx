@@ -19,8 +19,26 @@ function RefundForm() {
     setIsSubmitting(true);
     setMessage('');
 
+    // try {
+    //   const response = await apiClient.post('/refund/ProcessRefund', {
+    //     transactionId: form.transactionId,
+    //     refundCode: form.refundCode
+    //   });
+
+    //   if (response.data.success) {
+    //     setMessage('Refund processed successfully.');
+    //   } else {
+    //     setMessage('Refund failed: ' + response.data.message);
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    //   setMessage('Error processing refund.');
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
+
     try {
-      const response = await apiClient.post('/refund', {
+      const response = await apiClient.post('/refund/ProcessRefund', {
         transactionId: form.transactionId,
         refundCode: form.refundCode
       });
@@ -31,11 +49,18 @@ function RefundForm() {
         setMessage('Refund failed: ' + response.data.message);
       }
     } catch (error) {
+      if (error.response) {
+        setMessage('Refund failed: ' + error.response.data || 'Unknown error');
+      } else {
+        setMessage('Error processing refund.');
+      }
       console.error(error);
-      setMessage('Error processing refund.');
     } finally {
       setIsSubmitting(false);
     }
+
+
+
   };
 
   return (
