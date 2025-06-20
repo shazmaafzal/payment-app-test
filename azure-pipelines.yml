@@ -1,0 +1,85 @@
+trigger:
+  branches:
+    include:
+      - develop
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  backendProject: 'backend/PaymentApp.API/PaymentApp.API/PaymentApp.API.csproj'
+  frontendDirectory: 'frontend/payment-dashboard'
+
+stages:
+  - stage: Build_Backend
+    displayName: 'Build ASP.NET Core Backend'
+    jobs:
+      - job: Build_Backend_Job
+        displayName: 'Build & Publish .NET Project'
+        steps:
+          - task: UseDotNet@2
+            inputs:
+              packageType: 'sdk'
+              version: '8.x'
+              installationPath: $(Agent.ToolsDirectory)/dotnet
+
+          - task: DotNetCoreCLI@2
+            displayName: 'Restore NuGet Packages'
+            inputs:
+              command: 'restore'
+              projects: '$(backendProject)'
+
+          - task: DotNetCoreCLI@2
+            displayName: 'Build Backend'
+            inputs:
+              command: 'build'
+              projects: '$(backendProject)'
+              arguments: '--configuration $(buildConfiguration)'
+
+          - task: DotNetCoreCLI@2
+            displayName: 'Publish Backend'
+            inputs:
+              command: 'publish'
+              publishWebProjects: true
+              arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/backend'
+              zipAfterPublish: true
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Backend Artifact'
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)/backend'
+              ArtifactName: 'backend-app'
+              publishLocation: 'Container'
+
+  - stage: Build_Frontend
+    displayName: 'Build React Frontend'
+    dependsOn: Build_Backend
+    jobs:
+      - job: Build_Frontend_Job
+        displayName: 'Install and Build React App'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '18.x'
+              checkLatest: true
+
+          - script: |
+              cd $(frontendDirectory)
+              npm install
+              npm run build
+            displayName: 'Install and Build Frontend'
+
+          - task: CopyFiles@2
+            displayName: 'Copy Frontend Files'
+            inputs:
+              SourceFolder: '$(frontendDirectory)/dist'
+              Contents: '**'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)/frontend'
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Frontend Artifact'
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)/frontend'
+              ArtifactName: 'frontend-app'
+              publishLocation: 'Container'
